@@ -10,6 +10,6 @@
 
 安装单项：`npx skills add full-aigc-skills/cadcraft-skills --skill cadcraft-use`。三项可分别安装，不依赖兄弟技能目录。配套 Agent Plugin：`full-aigc-plugins/cadcraft-plugin`；插件中包含本库的哈希锁定快照。
 
-当前源参考为 `storytold/cadcraft` `0.3.0`。运行前仍应检查本机 CLI 与命令目录。许可证 Apache-2.0。尚未进行宿主安装和真实 CAD 文件验收。
+当前源参考为 `storytold/cadcraft` `0.3.0`。运行前仍应检查本机 CLI 与命令目录。使用 `python3 scripts/validate_skills.py` 做包内结构检查；CI 自动运行同一检查。许可证 Apache-2.0。尚未进行宿主安装和真实 CAD 文件验收。
 
 [简体中文](README.zh-CN.md)
