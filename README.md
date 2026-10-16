@@ -65,3 +65,7 @@ For MCP, load `cadcraft-mcp` or the companion plugin. Discover the live `list_co
 `.claude-plugin/plugin.json` declares three distributable skill directories. Each `SKILL.md` is under 500 lines and contains a trigger description in YAML frontmatter. Granular installation requires no sibling directory. The plugin locks each `SKILL.md` by SHA-256 plus this package's source commit; edits to skills require an explicit plugin snapshot refresh.
 
 Run `python3 scripts/validate_skills.py` after editing. CI runs the same structural gate on push and pull request; no host, desktop, or external-format job is configured. See [workflow and troubleshooting](docs/Workflow.md) for runtime checks. Licensed under [Apache-2.0](LICENSE).
+
+## 场景技能开发候选
+
+已增加 6 个领域场景技能及 1 个内嵌编辑器入口。详见 [场景目录](docs/scene-skills.md)。本地未发布候选，不代表全部场景的创作质量已验收。

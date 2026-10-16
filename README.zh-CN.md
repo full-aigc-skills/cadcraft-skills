@@ -65,3 +65,7 @@ cadcraft-cli info output.dxf
 `.claude-plugin/plugin.json` 声明三个可分发技能目录。每份 `SKILL.md` 少于 500 行，YAML frontmatter 描述触发条件；单项安装不依赖兄弟目录。插件通过 SHA-256 和本库源提交锁定技能副本；修改技能正文后必须显式刷新插件快照。
 
 修改后运行 `python3 scripts/validate_skills.py`。CI 在 push 与 pull request 时运行同一结构检查；尚未配置宿主、桌面或外部格式任务。运行时检查见[工作流与排障](docs/Workflow.zh-CN.md)。许可证为 [Apache-2.0](LICENSE)。
+
+## 场景技能开发候选
+
+已增加 6 个领域场景技能及 1 个内嵌编辑器入口。详见 [场景目录](docs/scene-skills.md)。本地未发布候选，不代表全部场景的创作质量已验收。
