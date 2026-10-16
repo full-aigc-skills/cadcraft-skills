@@ -8,7 +8,7 @@ license: Apache-2.0
 
 从[8条场景流程](references/workflows.md)选当前任务；[recipes.json](references/recipes.json)提供有序方法与参数，[命令证据](references/command-evidence.json)保存原生命令描述，[来源](references/sources.json)固定 GitHub 文档提交。
 
-先运行`cadcraft-cli --version`和`cadcraft-cli commands`确认CLI就绪；技能不附带CLI。缺失时按[官方发行说明](https://github.com/storytold/cadcraft/releases)选择系统版本，安装须遵守宿主授权。先确认单位、实际尺寸和输出用途。每条默认独立图纸；组合多个场景时先安排位置和偏移，避免都从原点叠放。所有示例为毫米模型空间，图框不等于打印设置。孔参数radius为半径；尺寸由几何计算，不把期望数值写入text冒充量测。图层分开轮廓、孔、中心线和尺寸。
+先运行`cadcraft-cli --version`和`cadcraft-cli commands`确认CLI就绪；技能不附带CLI。缺失时按[官方发行说明](https://github.com/storytold/cadcraft/releases)选择系统版本，安装须遵守宿主授权。先确认单位、实际尺寸和输出用途。每条默认独立图纸；组合多个场景时先安排位置和偏移，避免都从原点叠放。所有示例为毫米模型空间，图框不等于打印设置。孔参数radius为半径；尺寸由几何计算，不把期望数值写入text冒充量测。房间示例仅在新图设置DIMSCALE=100，使文字和箭头适配5000毫米空间；既有图纸先检查现有标注样式，不全局覆盖。白底审阅图使用深色尺寸与标签，避免屏幕图层色造成低对比度。图层分开轮廓、孔、中心线和尺寸。
 
 ## MCP 与 CLI
 

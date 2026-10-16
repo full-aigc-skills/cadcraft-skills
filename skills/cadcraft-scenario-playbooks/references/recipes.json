@@ -72,7 +72,7 @@
           "command": "layer.new",
           "params": {
             "name": "HOLES",
-            "color": 2,
+            "color": 1,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -130,7 +130,7 @@
           "command": "layer.new",
           "params": {
             "name": "DIMENSIONS",
-            "color": 3,
+            "color": 7,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -311,7 +311,7 @@
           "command": "layer.new",
           "params": {
             "name": "HOLES",
-            "color": 2,
+            "color": 1,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -369,7 +369,7 @@
           "command": "layer.new",
           "params": {
             "name": "CENTERLINES",
-            "color": 4,
+            "color": 8,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -413,7 +413,7 @@
           "command": "layer.new",
           "params": {
             "name": "DIMENSIONS",
-            "color": 3,
+            "color": 7,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -523,6 +523,16 @@
           "newDocumentOnly": true
         },
         {
+          "purpose": "仅本新建房间图放大原生标注文字与箭头",
+          "command": "setvar",
+          "params": {
+            "name": "DIMSCALE",
+            "value": 100
+          },
+          "parameterReference": "command-evidence.json#setvar",
+          "newDocumentOnly": true
+        },
+        {
           "purpose": "分离WALLS图层",
           "command": "layer.new",
           "params": {
@@ -583,7 +593,7 @@
           "command": "layer.new",
           "params": {
             "name": "DOOR",
-            "color": 2,
+            "color": 1,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -624,7 +634,7 @@
           "command": "layer.new",
           "params": {
             "name": "LABELS",
-            "color": 3,
+            "color": 7,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -647,7 +657,7 @@
           "command": "layer.new",
           "params": {
             "name": "DIMENSIONS",
-            "color": 3,
+            "color": 7,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -748,7 +758,8 @@
           0,
           2000,
           1000
-        ]
+        ],
+        "dimscale": 100
       },
       "checks": [
         "墙线未穿过门洞",
@@ -789,7 +800,7 @@
           "command": "layer.new",
           "params": {
             "name": "GRID",
-            "color": 4,
+            "color": 8,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -893,7 +904,7 @@
           "command": "layer.new",
           "params": {
             "name": "LABELS",
-            "color": 3,
+            "color": 7,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -1092,7 +1103,7 @@
           "command": "layer.new",
           "params": {
             "name": "ROUTE",
-            "color": 2,
+            "color": 1,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -1129,7 +1140,7 @@
           "command": "layer.new",
           "params": {
             "name": "DIMENSIONS",
-            "color": 3,
+            "color": 7,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -1294,7 +1305,7 @@
           "command": "layer.new",
           "params": {
             "name": "HOLES",
-            "color": 2,
+            "color": 1,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -1376,7 +1387,7 @@
           "command": "layer.new",
           "params": {
             "name": "DIMENSIONS",
-            "color": 3,
+            "color": 7,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -1575,7 +1586,7 @@
           "command": "layer.new",
           "params": {
             "name": "DIMENSIONS",
-            "color": 3,
+            "color": 7,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"
@@ -1780,7 +1791,7 @@
           "command": "layer.new",
           "params": {
             "name": "LABELS",
-            "color": 3,
+            "color": 7,
             "current": true
           },
           "parameterReference": "command-evidence.json#layer.new"

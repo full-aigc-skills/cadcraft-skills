@@ -9,15 +9,15 @@
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
 | 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
-| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离OUTLINE图层 | `layer.new` | `{"name":"OUTLINE","color":7,"current":true}` |
 | 4. 创建真实闭合轮廓 | `pline` | `{"vertices":[[0,0],[100,0],[100,60],[0,60]],"closed":true}` |
-| 5. 分离HOLES图层 | `layer.new` | `{"name":"HOLES","color":2,"current":true}` |
+| 5. 分离HOLES图层 | `layer.new` | `{"name":"HOLES","color":1,"current":true}` |
 | 6. 绘制圆孔或外圆 | `circle` | `{"center":[10,10],"radius":3}` |
 | 7. 绘制圆孔或外圆 | `circle` | `{"center":[90,10],"radius":3}` |
 | 8. 绘制圆孔或外圆 | `circle` | `{"center":[90,50],"radius":3}` |
 | 9. 绘制圆孔或外圆 | `circle` | `{"center":[10,50],"radius":3}` |
-| 10. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":3,"current":true}` |
+| 10. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":7,"current":true}` |
 | 11. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[0,0],"p2":[100,0],"at":[50,-12]}` |
 | 12. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[100,0],"p2":[100,60],"at":[115,30]}` |
 | 13. 标注孔的真实直径 | `dimdiameter` | `{"center":[10,10],"point":[13,10]}` |
@@ -33,19 +33,19 @@
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
 | 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
-| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离RINGS图层 | `layer.new` | `{"name":"RINGS","color":7,"current":true}` |
 | 4. 绘制圆孔或外圆 | `circle` | `{"center":[0,0],"radius":30}` |
 | 5. 绘制圆孔或外圆 | `circle` | `{"center":[0,0],"radius":12}` |
-| 6. 分离HOLES图层 | `layer.new` | `{"name":"HOLES","color":2,"current":true}` |
+| 6. 分离HOLES图层 | `layer.new` | `{"name":"HOLES","color":1,"current":true}` |
 | 7. 绘制圆孔或外圆 | `circle` | `{"center":[20,0],"radius":3}` |
 | 8. 绘制圆孔或外圆 | `circle` | `{"center":[0,20],"radius":3}` |
 | 9. 绘制圆孔或外圆 | `circle` | `{"center":[-20,0],"radius":3}` |
 | 10. 绘制圆孔或外圆 | `circle` | `{"center":[0,-20],"radius":3}` |
-| 11. 分离CENTERLINES图层 | `layer.new` | `{"name":"CENTERLINES","color":4,"current":true}` |
+| 11. 分离CENTERLINES图层 | `layer.new` | `{"name":"CENTERLINES","color":8,"current":true}` |
 | 12. 绘制定位线 | `line` | `{"points":[[-35,0],[35,0]]}` |
 | 13. 绘制定位线 | `line` | `{"points":[[0,-35],[0,35]]}` |
-| 14. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":3,"current":true}` |
+| 14. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":7,"current":true}` |
 | 15. 标注外径 | `dimdiameter` | `{"center":[0,0],"point":[30,0]}` |
 | 16. 标注内径 | `dimdiameter` | `{"center":[0,0],"point":[12,0]}` |
 
@@ -60,18 +60,19 @@
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
 | 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
-| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
-| 3. 分离WALLS图层 | `layer.new` | `{"name":"WALLS","color":7,"current":true}` |
-| 4. 绘制定位线 | `line` | `{"points":[[0,0],[2000,0]]}` |
-| 5. 绘制定位线 | `line` | `{"points":[[3000,0],[5000,0],[5000,4000],[0,4000],[0,0]]}` |
-| 6. 分离DOOR图层 | `layer.new` | `{"name":"DOOR","color":2,"current":true}` |
-| 7. 绘制定位线 | `line` | `{"points":[[2000,0],[2000,1000]]}` |
-| 8. 门开启示意弧 | `arc` | `{"center":[2000,0],"radius":1000,"start":0,"end":90}` |
-| 9. 分离LABELS图层 | `layer.new` | `{"name":"LABELS","color":3,"current":true}` |
-| 10. 加入房间标识 | `text` | `{"at":[1800,2000],"text":"ROOM A","height":200}` |
-| 11. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":3,"current":true}` |
-| 12. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[0,0],"p2":[5000,0],"at":[2500,-600]}` |
-| 13. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[5000,0],"p2":[5000,4000],"at":[5600,2000]}` |
+| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 3. 仅本新建房间图放大原生标注文字与箭头 | `setvar` | `{"name":"DIMSCALE","value":100}` |
+| 4. 分离WALLS图层 | `layer.new` | `{"name":"WALLS","color":7,"current":true}` |
+| 5. 绘制定位线 | `line` | `{"points":[[0,0],[2000,0]]}` |
+| 6. 绘制定位线 | `line` | `{"points":[[3000,0],[5000,0],[5000,4000],[0,4000],[0,0]]}` |
+| 7. 分离DOOR图层 | `layer.new` | `{"name":"DOOR","color":1,"current":true}` |
+| 8. 绘制定位线 | `line` | `{"points":[[2000,0],[2000,1000]]}` |
+| 9. 门开启示意弧 | `arc` | `{"center":[2000,0],"radius":1000,"start":0,"end":90}` |
+| 10. 分离LABELS图层 | `layer.new` | `{"name":"LABELS","color":7,"current":true}` |
+| 11. 加入房间标识 | `text` | `{"at":[1800,2000],"text":"ROOM A","height":200}` |
+| 12. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":7,"current":true}` |
+| 13. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[0,0],"p2":[5000,0],"at":[2500,-600]}` |
+| 14. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[5000,0],"p2":[5000,4000],"at":[5600,2000]}` |
 
 检查：墙线未穿过门洞；门扇与开启弧对应同一铰点；总长总宽尺寸存在。
 
@@ -84,14 +85,14 @@
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
 | 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
-| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
-| 3. 分离GRID图层 | `layer.new` | `{"name":"GRID","color":4,"current":true}` |
+| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 3. 分离GRID图层 | `layer.new` | `{"name":"GRID","color":8,"current":true}` |
 | 4. 创建真实闭合轮廓 | `pline` | `{"vertices":[[0,0],[3000,0],[3000,3000],[0,3000]],"closed":true}` |
 | 5. 绘制定位线 | `line` | `{"points":[[1000,0],[1000,3000]]}` |
 | 6. 绘制定位线 | `line` | `{"points":[[2000,0],[2000,3000]]}` |
 | 7. 绘制定位线 | `line` | `{"points":[[0,1000],[3000,1000]]}` |
 | 8. 绘制定位线 | `line` | `{"points":[[0,2000],[3000,2000]]}` |
-| 9. 分离LABELS图层 | `layer.new` | `{"name":"LABELS","color":3,"current":true}` |
+| 9. 分离LABELS图层 | `layer.new` | `{"name":"LABELS","color":7,"current":true}` |
 | 10. 网格单元标识 | `text` | `{"at":[300,450],"text":"A1","height":120}` |
 | 11. 网格单元标识 | `text` | `{"at":[1300,450],"text":"B1","height":120}` |
 | 12. 网格单元标识 | `text` | `{"at":[2300,450],"text":"C1","height":120}` |
@@ -113,10 +114,10 @@
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
 | 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
-| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
-| 3. 分离ROUTE图层 | `layer.new` | `{"name":"ROUTE","color":2,"current":true}` |
+| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 3. 分离ROUTE图层 | `layer.new` | `{"name":"ROUTE","color":1,"current":true}` |
 | 4. 绘制有宽度的路由中心线 | `pline` | `{"vertices":[[0,0],[80,0],[80,60],[160,60]],"closed":false,"width":2}` |
-| 5. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":3,"current":true}` |
+| 5. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":7,"current":true}` |
 | 6. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[0,0],"p2":[80,0],"at":[40,-12]}` |
 | 7. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[80,0],"p2":[80,60],"at":[95,30]}` |
 | 8. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[80,60],"p2":[160,60],"at":[120,75]}` |
@@ -132,17 +133,17 @@
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
 | 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
-| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离OUTLINE图层 | `layer.new` | `{"name":"OUTLINE","color":7,"current":true}` |
 | 4. 创建真实闭合轮廓 | `pline` | `{"vertices":[[0,0],[120,0],[120,30],[0,30]],"closed":true}` |
-| 5. 分离HOLES图层 | `layer.new` | `{"name":"HOLES","color":2,"current":true}` |
+| 5. 分离HOLES图层 | `layer.new` | `{"name":"HOLES","color":1,"current":true}` |
 | 6. 绘制圆孔或外圆 | `circle` | `{"center":[10,15],"radius":2}` |
 | 7. 绘制圆孔或外圆 | `circle` | `{"center":[30,15],"radius":2}` |
 | 8. 绘制圆孔或外圆 | `circle` | `{"center":[50,15],"radius":2}` |
 | 9. 绘制圆孔或外圆 | `circle` | `{"center":[70,15],"radius":2}` |
 | 10. 绘制圆孔或外圆 | `circle` | `{"center":[90,15],"radius":2}` |
 | 11. 绘制圆孔或外圆 | `circle` | `{"center":[110,15],"radius":2}` |
-| 12. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":3,"current":true}` |
+| 12. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":7,"current":true}` |
 | 13. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[10,15],"p2":[30,15],"at":[20,42]}` |
 | 14. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[0,0],"p2":[120,0],"at":[60,-12]}` |
 
@@ -157,11 +158,11 @@
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
 | 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
-| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离OUTLINE图层 | `layer.new` | `{"name":"OUTLINE","color":7,"current":true}` |
 | 4. 创建真实闭合轮廓 | `pline` | `{"vertices":[[0,0],[100,0],[100,50],[70,50],[70,80],[0,80]],"closed":true}` |
 | 5. 查询当前示例轮廓面积 | `area` | `{"points":[[0,0],[100,0],[100,50],[70,50],[70,80],[0,80]]}` |
-| 6. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":3,"current":true}` |
+| 6. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":7,"current":true}` |
 | 7. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[0,0],"p2":[100,0],"at":[50,-12]}` |
 | 8. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[70,50],"p2":[100,50],"at":[85,65]}` |
 
@@ -176,12 +177,12 @@
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
 | 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
-| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离BORDER图层 | `layer.new` | `{"name":"BORDER","color":7,"current":true}` |
 | 4. 创建真实闭合轮廓 | `pline` | `{"vertices":[[0,0],[297,0],[297,210],[0,210]],"closed":true}` |
 | 5. 创建真实闭合轮廓 | `pline` | `{"vertices":[[10,10],[287,10],[287,200],[10,200]],"closed":true}` |
 | 6. 创建真实闭合轮廓 | `pline` | `{"vertices":[[187,10],[287,10],[287,40],[187,40]],"closed":true}` |
-| 7. 分离LABELS图层 | `layer.new` | `{"name":"LABELS","color":3,"current":true}` |
+| 7. 分离LABELS图层 | `layer.new` | `{"name":"LABELS","color":7,"current":true}` |
 | 8. 图号 | `text` | `{"at":[192,28],"text":"DRAWING A-001","height":3}` |
 | 9. 单位 | `text` | `{"at":[192,19],"text":"UNITS mm","height":3}` |
 | 10. 修订 | `text` | `{"at":[192,12],"text":"REV A","height":3}` |
