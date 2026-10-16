@@ -8,8 +8,8 @@
 
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
-| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true}` |
-| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
+| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离OUTLINE图层 | `layer.new` | `{"name":"OUTLINE","color":7,"current":true}` |
 | 4. 创建真实闭合轮廓 | `pline` | `{"vertices":[[0,0],[100,0],[100,60],[0,60]],"closed":true}` |
 | 5. 分离HOLES图层 | `layer.new` | `{"name":"HOLES","color":2,"current":true}` |
@@ -32,8 +32,8 @@
 
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
-| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true}` |
-| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
+| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离RINGS图层 | `layer.new` | `{"name":"RINGS","color":7,"current":true}` |
 | 4. 绘制圆孔或外圆 | `circle` | `{"center":[0,0],"radius":30}` |
 | 5. 绘制圆孔或外圆 | `circle` | `{"center":[0,0],"radius":12}` |
@@ -59,8 +59,8 @@
 
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
-| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true}` |
-| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
+| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离WALLS图层 | `layer.new` | `{"name":"WALLS","color":7,"current":true}` |
 | 4. 绘制定位线 | `line` | `{"points":[[0,0],[2000,0]]}` |
 | 5. 绘制定位线 | `line` | `{"points":[[3000,0],[5000,0],[5000,4000],[0,4000],[0,0]]}` |
@@ -83,8 +83,8 @@
 
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
-| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true}` |
-| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
+| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离GRID图层 | `layer.new` | `{"name":"GRID","color":4,"current":true}` |
 | 4. 创建真实闭合轮廓 | `pline` | `{"vertices":[[0,0],[3000,0],[3000,3000],[0,3000]],"closed":true}` |
 | 5. 绘制定位线 | `line` | `{"points":[[1000,0],[1000,3000]]}` |
@@ -112,8 +112,8 @@
 
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
-| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true}` |
-| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
+| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离ROUTE图层 | `layer.new` | `{"name":"ROUTE","color":2,"current":true}` |
 | 4. 绘制有宽度的路由中心线 | `pline` | `{"vertices":[[0,0],[80,0],[80,60],[160,60]],"closed":false,"width":2}` |
 | 5. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":3,"current":true}` |
@@ -131,8 +131,8 @@
 
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
-| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true}` |
-| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
+| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离OUTLINE图层 | `layer.new` | `{"name":"OUTLINE","color":7,"current":true}` |
 | 4. 创建真实闭合轮廓 | `pline` | `{"vertices":[[0,0],[120,0],[120,30],[0,30]],"closed":true}` |
 | 5. 分离HOLES图层 | `layer.new` | `{"name":"HOLES","color":2,"current":true}` |
@@ -156,8 +156,8 @@
 
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
-| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true}` |
-| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
+| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离OUTLINE图层 | `layer.new` | `{"name":"OUTLINE","color":7,"current":true}` |
 | 4. 创建真实闭合轮廓 | `pline` | `{"vertices":[[0,0],[100,0],[100,50],[70,50],[70,80],[0,80]],"closed":true}` |
 | 5. 查询当前示例轮廓面积 | `area` | `{"points":[[0,0],[100,0],[100,50],[70,50],[70,80],[0,80]]}` |
@@ -175,8 +175,8 @@
 
 | 步骤与目的 | 方法 | 参数 |
 | --- | --- | --- |
-| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true}` |
-| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
+| 2. 仅新图设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
 | 3. 分离BORDER图层 | `layer.new` | `{"name":"BORDER","color":7,"current":true}` |
 | 4. 创建真实闭合轮廓 | `pline` | `{"vertices":[[0,0],[297,0],[297,210],[0,210]],"closed":true}` |
 | 5. 创建真实闭合轮廓 | `pline` | `{"vertices":[[10,10],[287,10],[287,200],[10,200]],"closed":true}` |

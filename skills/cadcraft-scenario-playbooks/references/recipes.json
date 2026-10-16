@@ -15,7 +15,8 @@
           "purpose": "仅新建任务时初始化毫米图纸",
           "command": "new",
           "params": {
-            "metric": true
+            "metric": true,
+            "template": "."
           },
           "parameterReference": "command-evidence.json#new",
           "newDocumentOnly": true
@@ -27,7 +28,8 @@
             "name": "INSUNITS",
             "value": 4
           },
-          "parameterReference": "command-evidence.json#setvar"
+          "parameterReference": "command-evidence.json#setvar",
+          "newDocumentOnly": true
         },
         {
           "purpose": "分离OUTLINE图层",
@@ -229,7 +231,12 @@
           ]
         ],
         "area": 6000,
-        "dimensions": 3
+        "dimensions": 3,
+        "dimensionValues": [
+          100,
+          60,
+          6
+        ]
       },
       "checks": [
         "闭合板轮廓面积6000平方毫米",
@@ -249,7 +256,8 @@
           "purpose": "仅新建任务时初始化毫米图纸",
           "command": "new",
           "params": {
-            "metric": true
+            "metric": true,
+            "template": "."
           },
           "parameterReference": "command-evidence.json#new",
           "newDocumentOnly": true
@@ -261,7 +269,8 @@
             "name": "INSUNITS",
             "value": 4
           },
-          "parameterReference": "command-evidence.json#setvar"
+          "parameterReference": "command-evidence.json#setvar",
+          "newDocumentOnly": true
         },
         {
           "purpose": "分离RINGS图层",
@@ -473,7 +482,11 @@
             3
           ]
         ],
-        "dimensions": 2
+        "dimensions": 2,
+        "dimensionValues": [
+          60,
+          24
+        ]
       },
       "checks": [
         "同心双圆和四个定位孔保留",
@@ -493,7 +506,8 @@
           "purpose": "仅新建任务时初始化毫米图纸",
           "command": "new",
           "params": {
-            "metric": true
+            "metric": true,
+            "template": "."
           },
           "parameterReference": "command-evidence.json#new",
           "newDocumentOnly": true
@@ -505,7 +519,8 @@
             "name": "INSUNITS",
             "value": 4
           },
-          "parameterReference": "command-evidence.json#setvar"
+          "parameterReference": "command-evidence.json#setvar",
+          "newDocumentOnly": true
         },
         {
           "purpose": "分离WALLS图层",
@@ -691,6 +706,48 @@
           1000,
           0,
           90
+        ],
+        "dimensionValues": [
+          5000,
+          4000
+        ],
+        "wallSegments": [
+          [
+            0,
+            0,
+            2000,
+            0
+          ],
+          [
+            3000,
+            0,
+            5000,
+            0
+          ],
+          [
+            5000,
+            0,
+            5000,
+            4000
+          ],
+          [
+            5000,
+            4000,
+            0,
+            4000
+          ],
+          [
+            0,
+            4000,
+            0,
+            0
+          ]
+        ],
+        "doorLeaf": [
+          2000,
+          0,
+          2000,
+          1000
         ]
       },
       "checks": [
@@ -711,7 +768,8 @@
           "purpose": "仅新建任务时初始化毫米图纸",
           "command": "new",
           "params": {
-            "metric": true
+            "metric": true,
+            "template": "."
           },
           "parameterReference": "command-evidence.json#new",
           "newDocumentOnly": true
@@ -723,7 +781,8 @@
             "name": "INSUNITS",
             "value": 4
           },
-          "parameterReference": "command-evidence.json#setvar"
+          "parameterReference": "command-evidence.json#setvar",
+          "newDocumentOnly": true
         },
         {
           "purpose": "分离GRID图层",
@@ -991,7 +1050,8 @@
         "gridCoordinates": [
           1000,
           2000
-        ]
+        ],
+        "dimensionValues": []
       },
       "checks": [
         "四条内部网格线间距1000",
@@ -1011,7 +1071,8 @@
           "purpose": "仅新建任务时初始化毫米图纸",
           "command": "new",
           "params": {
-            "metric": true
+            "metric": true,
+            "template": "."
           },
           "parameterReference": "command-evidence.json#new",
           "newDocumentOnly": true
@@ -1023,7 +1084,8 @@
             "name": "INSUNITS",
             "value": 4
           },
-          "parameterReference": "command-evidence.json#setvar"
+          "parameterReference": "command-evidence.json#setvar",
+          "newDocumentOnly": true
         },
         {
           "purpose": "分离ROUTE图层",
@@ -1150,7 +1212,12 @@
           ]
         ],
         "length": 220,
-        "dimensions": 3
+        "dimensions": 3,
+        "dimensionValues": [
+          80,
+          60,
+          80
+        ]
       },
       "checks": [
         "实际折线长度220毫米",
@@ -1170,7 +1237,8 @@
           "purpose": "仅新建任务时初始化毫米图纸",
           "command": "new",
           "params": {
-            "metric": true
+            "metric": true,
+            "template": "."
           },
           "parameterReference": "command-evidence.json#new",
           "newDocumentOnly": true
@@ -1182,7 +1250,8 @@
             "name": "INSUNITS",
             "value": 4
           },
-          "parameterReference": "command-evidence.json#setvar"
+          "parameterReference": "command-evidence.json#setvar",
+          "newDocumentOnly": true
         },
         {
           "purpose": "分离OUTLINE图层",
@@ -1384,7 +1453,11 @@
             2
           ]
         ],
-        "dimensions": 2
+        "dimensions": 2,
+        "dimensionValues": [
+          20,
+          120
+        ]
       },
       "checks": [
         "孔数6且节距20",
@@ -1404,7 +1477,8 @@
           "purpose": "仅新建任务时初始化毫米图纸",
           "command": "new",
           "params": {
-            "metric": true
+            "metric": true,
+            "template": "."
           },
           "parameterReference": "command-evidence.json#new",
           "newDocumentOnly": true
@@ -1416,7 +1490,8 @@
             "name": "INSUNITS",
             "value": 4
           },
-          "parameterReference": "command-evidence.json#setvar"
+          "parameterReference": "command-evidence.json#setvar",
+          "newDocumentOnly": true
         },
         {
           "purpose": "分离OUTLINE图层",
@@ -1572,7 +1647,11 @@
           ]
         ],
         "area": 7100,
-        "dimensions": 2
+        "dimensions": 2,
+        "dimensionValues": [
+          100,
+          30
+        ]
       },
       "checks": [
         "DXF实际闭合顶点面积7100",
@@ -1592,7 +1671,8 @@
           "purpose": "仅新建任务时初始化毫米图纸",
           "command": "new",
           "params": {
-            "metric": true
+            "metric": true,
+            "template": "."
           },
           "parameterReference": "command-evidence.json#new",
           "newDocumentOnly": true
@@ -1604,7 +1684,8 @@
             "name": "INSUNITS",
             "value": 4
           },
-          "parameterReference": "command-evidence.json#setvar"
+          "parameterReference": "command-evidence.json#setvar",
+          "newDocumentOnly": true
         },
         {
           "purpose": "分离BORDER图层",
@@ -1750,7 +1831,8 @@
           "UNITS mm",
           "REV A"
         ],
-        "closedPolylines": 3
+        "closedPolylines": 3,
+        "dimensionValues": []
       },
       "checks": [
         "三个闭合框保留",

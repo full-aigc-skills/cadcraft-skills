@@ -170,6 +170,16 @@
       ],
       "params": "{at, text, height?, rotation? (degrees), justify?: L|C|R|M|TL|TC|TR|ML|MC|MR|BL|BC|BR}",
       "shortcut": null
+    },
+    "getvar": {
+      "aliases": [],
+      "enabled": true,
+      "id": "getvar",
+      "interactive": false,
+      "label": "Get Variable",
+      "menu": [],
+      "params": "{name}",
+      "shortcut": null
     }
   }
 }
