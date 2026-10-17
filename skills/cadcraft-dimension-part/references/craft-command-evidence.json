@@ -7,20 +7,76 @@
   },
   "ciRun": "https://github.com/partme-ai/full-aigc-plugins/actions/runs/38921194883",
   "observedCommands": {
-    "dist": {
+    "new": {
       "aliases": [
-        "di"
+        "qnew"
       ],
       "enabled": true,
-      "id": "dist",
+      "id": "new",
+      "interactive": false,
+      "label": "New Drawing...",
+      "menu": [
+        "File",
+        "New Drawing..."
+      ],
+      "params": "{metric?: bool, template?: path to a .dwt/.dxf template (\".\" for none; default QNEWTEMPLATE)}",
+      "shortcut": "Cmd+N"
+    },
+    "setvar": {
+      "aliases": [
+        "set"
+      ],
+      "enabled": true,
+      "id": "setvar",
       "interactive": true,
-      "label": "Distance",
+      "label": "Set Variable",
       "menu": [
         "Tools",
         "Inquiry",
-        "Distance"
+        "Set Variable"
       ],
-      "params": "{p1, p2}",
+      "params": "{name, value}",
+      "shortcut": null
+    },
+    "layer.new": {
+      "aliases": [],
+      "enabled": true,
+      "id": "layer.new",
+      "interactive": false,
+      "label": "New Layer",
+      "menu": [],
+      "params": "{name, color?, linetype?, lineweight? (mm), current?: bool}",
+      "shortcut": null
+    },
+    "pline": {
+      "aliases": [
+        "pl"
+      ],
+      "enabled": true,
+      "id": "pline",
+      "interactive": true,
+      "label": "Polyline",
+      "menu": [
+        "Draw",
+        "Polyline"
+      ],
+      "params": "{vertices: [[x,y] | {p:[x,y], bulge, startWidth, endWidth}], closed?, width?}",
+      "shortcut": null
+    },
+    "circle": {
+      "aliases": [
+        "c"
+      ],
+      "enabled": true,
+      "id": "circle",
+      "interactive": true,
+      "label": "Circle",
+      "menu": [
+        "Draw",
+        "Circle",
+        "Center, Radius"
+      ],
+      "params": "{center, radius} | {center, diameter} | {p1, p2} | {p1, p2, p3}",
       "shortcut": null
     },
     "dimlinear": {
@@ -39,22 +95,6 @@
       "params": "{p1, p2, at, rotation? (degrees; default: horizontal/vertical from `at`), text?} | {object: hex, at} (associative)",
       "shortcut": null
     },
-    "dimaligned": {
-      "aliases": [
-        "dal",
-        "dimali"
-      ],
-      "enabled": true,
-      "id": "dimaligned",
-      "interactive": true,
-      "label": "Aligned",
-      "menu": [
-        "Dimension",
-        "Aligned"
-      ],
-      "params": "{p1, p2, at, text?}",
-      "shortcut": null
-    },
     "dimradius": {
       "aliases": [
         "dra",
@@ -70,7 +110,22 @@
       ],
       "params": "{handle, at?} | {center, point}",
       "shortcut": null
+    },
+    "drawing.inspect": {
+      "aliases": [],
+      "enabled": true,
+      "id": "drawing.inspect",
+      "interactive": false,
+      "label": "Inspect Drawing",
+      "menu": [],
+      "params": "{entities?: bool, limit?: n}",
+      "shortcut": null
     }
   },
-  "sceneAcceptance": "NOT_RUN"
+  "sceneAcceptance": "NOT_RUN",
+  "catalogSource": {
+    "repository": "storytold/cadcraft",
+    "commit": "9b2308b138e90a01d28d46c84021a74b1ae7ef4a",
+    "run": "https://github.com/partme-ai/full-aigc-plugins/actions/runs/39022779188"
+  }
 }
