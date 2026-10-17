@@ -7,6 +7,16 @@
   },
   "ciRun": "https://github.com/partme-ai/full-aigc-plugins/actions/runs/38921194883",
   "observedCommands": {
+    "getvar": {
+      "aliases": [],
+      "enabled": true,
+      "id": "getvar",
+      "interactive": false,
+      "label": "Get Variable",
+      "menu": [],
+      "params": "{name}",
+      "shortcut": null
+    },
     "drawing.inspect": {
       "aliases": [],
       "enabled": true,
@@ -16,21 +26,6 @@
       "menu": [],
       "params": "{entities?: bool, limit?: n}",
       "shortcut": null
-    },
-    "plot": {
-      "aliases": [
-        "print"
-      ],
-      "enabled": true,
-      "id": "plot",
-      "interactive": false,
-      "label": "Print...",
-      "menu": [
-        "File",
-        "Print..."
-      ],
-      "params": "{path? (else returns base64 `data`), layout?: current|\"Model\", paper?, landscape?, fit?: bool, scale?: number | \"1:50\", center?: bool (Model, default true), offset?: [x,y] mm (Model, when center is false; each within ±100000), lineweights?: bool, plotTransparency?: bool (default: the page setup's; PLOTTRANSPARENCYOVERRIDE 0/2 overrides it), plotArea?: extents|display|limits|window (Model) | layout, window?: [[x1,y1],[x2,y2]]} (typed or from the menu: the Plot dialog)",
-      "shortcut": "Cmd+P"
     },
     "dist": {
       "aliases": [
@@ -47,7 +42,30 @@
       ],
       "params": "{p1, p2}",
       "shortcut": null
+    },
+    "plot": {
+      "aliases": [
+        "print"
+      ],
+      "enabled": true,
+      "id": "plot",
+      "interactive": false,
+      "label": "Print...",
+      "menu": [
+        "File",
+        "Print..."
+      ],
+      "params": "{path? (else returns base64 `data`), layout?: current|\"Model\", paper?, landscape?, fit?: bool, scale?: number | \"1:50\", center?: bool (Model, default true), offset?: [x,y] mm (Model, when center is false; each within ±100000), lineweights?: bool, plotTransparency?: bool (default: the page setup's; PLOTTRANSPARENCYOVERRIDE 0/2 overrides it), plotArea?: extents|display|limits|window (Model) | layout, window?: [[x1,y1],[x2,y2]]} (typed or from the menu: the Plot dialog)",
+      "shortcut": "Cmd+P"
     }
   },
-  "sceneAcceptance": "NOT_RUN"
+  "sceneAcceptance": "NOT_RUN",
+  "additionalParameterEvidence": {
+    "plot.compress": {
+      "repository": "storytold/cadcraft",
+      "commit": "9b2308b138e90a01d28d46c84021a74b1ae7ef4a",
+      "path": "crates/io/src/pdf.rs",
+      "fact": "PdfOptions::from_json reads compress; false leaves PDF streams inspectable"
+    }
+  }
 }

@@ -5,56 +5,155 @@
   "execution": "COMMAND_MAPPED_NOT_SCENE_ACCEPTED",
   "steps": [
     {
-      "purpose": "按实测毫米尺寸建立墙体层",
+      "purpose": "仅新建任务时初始化毫米图纸",
+      "command": "new",
+      "params": {
+        "metric": true,
+        "template": "."
+      },
+      "newDocumentOnly": true
+    },
+    {
+      "purpose": "显式设置单位为毫米",
+      "command": "setvar",
+      "params": {
+        "name": "INSUNITS",
+        "value": 4
+      },
+      "newDocumentOnly": true
+    },
+    {
+      "purpose": "仅本新建房间图放大原生标注文字与箭头",
+      "command": "setvar",
+      "params": {
+        "name": "DIMSCALE",
+        "value": 100
+      },
+      "newDocumentOnly": true
+    },
+    {
+      "purpose": "分离WALLS图层",
       "command": "layer.new",
       "params": {
-        "name": "WALL",
+        "name": "WALLS",
+        "color": 7,
         "current": true
       }
     },
     {
-      "purpose": "沿测量坐标闭合外轮廓",
-      "command": "pline",
-      "params": {
-        "vertices": [
-          [
-            0,
-            0
-          ],
-          [
-            5000,
-            0
-          ],
-          [
-            5000,
-            4000
-          ],
-          [
-            0,
-            4000
-          ]
-        ],
-        "closed": true
-      }
-    },
-    {
-      "purpose": "门窗与内墙逐段画线，示例为一条隔墙",
+      "purpose": "绘制定位线",
       "command": "line",
       "params": {
         "points": [
           [
-            2500,
+            0,
             0
           ],
           [
-            2500,
-            1800
+            2000,
+            0
           ]
         ]
       }
     },
     {
-      "purpose": "放置不遮挡墙体的净尺寸",
+      "purpose": "绘制定位线",
+      "command": "line",
+      "params": {
+        "points": [
+          [
+            3000,
+            0
+          ],
+          [
+            5000,
+            0
+          ],
+          [
+            5000,
+            4000
+          ],
+          [
+            0,
+            4000
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "purpose": "分离DOOR图层",
+      "command": "layer.new",
+      "params": {
+        "name": "DOOR",
+        "color": 1,
+        "current": true
+      }
+    },
+    {
+      "purpose": "绘制定位线",
+      "command": "line",
+      "params": {
+        "points": [
+          [
+            2000,
+            0
+          ],
+          [
+            2000,
+            1000
+          ]
+        ]
+      }
+    },
+    {
+      "purpose": "门开启示意弧",
+      "command": "arc",
+      "params": {
+        "center": [
+          2000,
+          0
+        ],
+        "radius": 1000,
+        "start": 0,
+        "end": 90
+      }
+    },
+    {
+      "purpose": "分离LABELS图层",
+      "command": "layer.new",
+      "params": {
+        "name": "LABELS",
+        "color": 7,
+        "current": true
+      }
+    },
+    {
+      "purpose": "加入房间标识",
+      "command": "text",
+      "params": {
+        "at": [
+          1800,
+          2000
+        ],
+        "text": "ROOM A",
+        "height": 200
+      }
+    },
+    {
+      "purpose": "分离DIMENSIONS图层",
+      "command": "layer.new",
+      "params": {
+        "name": "DIMENSIONS",
+        "color": 7,
+        "current": true
+      }
+    },
+    {
+      "purpose": "以实际端点生成尺寸，不覆盖数值",
       "command": "dimlinear",
       "params": {
         "p1": [
@@ -66,21 +165,93 @@
           0
         ],
         "at": [
-          0,
-          -400
+          2500,
+          -600
         ]
       }
     },
     {
-      "purpose": "检查实体及单位",
-      "command": "drawing.inspect",
+      "purpose": "以实际端点生成尺寸，不覆盖数值",
+      "command": "dimlinear",
       "params": {
-        "entities": true
+        "p1": [
+          5000,
+          0
+        ],
+        "p2": [
+          5000,
+          4000
+        ],
+        "at": [
+          5600,
+          2000
+        ]
       }
     }
   ],
-  "check": "核对房间净尺寸、门窗留口、墙体厚度与标注，不把示例矩形当真实房屋图。",
-  "boundary": "输入必须有可信单位与实测边长；多段线返回句柄后才可按需要 offset。",
+  "check": "在保存并重开的DXF核对5000×4000实际尺寸、底边2000—3000的1000毫米开口、门扇和开启弧；尺寸数值来自实体定义，禁止文字覆盖。",
+  "boundary": "此例仅为新建单线墙示意，不包含墙厚、窗户和施工公差。既有文件先核实INSUNITS；跳过newDocumentOnly步骤并为目标区域重算坐标，不能叠画此例或把已有整墙当已开洞。",
   "templateOnly": true,
-  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。"
+  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。",
+  "inputs": "5000×4000毫米空间，底边2000至3000留1000毫米门洞。",
+  "assertions": {
+    "dimensions": 2,
+    "texts": [
+      "ROOM A"
+    ],
+    "doorGap": [
+      2000,
+      3000
+    ],
+    "arc": [
+      2000,
+      0,
+      1000,
+      0,
+      90
+    ],
+    "dimensionValues": [
+      5000,
+      4000
+    ],
+    "wallSegments": [
+      [
+        0,
+        0,
+        2000,
+        0
+      ],
+      [
+        3000,
+        0,
+        5000,
+        0
+      ],
+      [
+        5000,
+        0,
+        5000,
+        4000
+      ],
+      [
+        5000,
+        4000,
+        0,
+        4000
+      ],
+      [
+        0,
+        4000,
+        0,
+        0
+      ]
+    ],
+    "doorLeaf": [
+      2000,
+      0,
+      2000,
+      1000
+    ],
+    "dimscale": 100
+  }
 }

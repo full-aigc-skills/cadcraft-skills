@@ -4,10 +4,12 @@
 
 | 顺序与目的 | 实际方法 | 参数例子 |
 | --- | --- | --- |
-| 1. 检查对象当前层与实体 | `drawing.inspect` | `{"entities":true}` |
-| 2. 建立有用途的标注层 | `layer.new` | `{"name":"DIMENSIONS","color":2}` |
-| 3. 把底图层锁定且不打印 | `layer.set` | `{"name":"REFERENCE","locked":true,"plot":false}` |
-| 4. 统一墙体线宽 | `layer.set` | `{"name":"WALL","lineweight":0.35}` |
+| 1. 读取实际图层及开关锁定状态，先匹配真实图层 | `layer` | `{}` |
+| 2. 只读取既有单位，不重设图纸 | `getvar` | `{"name":"INSUNITS"}` |
+| 3. 检查对象当前层与实体 | `drawing.inspect` | `{"entities":true}` |
+| 4. 建立有用途的标注层（仅图层不存在时） | `layer.new` | `{"name":"DIMENSIONS","color":2}` |
+| 5. 把底图层锁定且不打印 | `layer.set` | `{"name":"REFERENCE","locked":true,"plot":false}` |
+| 6. 统一墙体线宽 | `layer.set` | `{"name":"WALL","lineweight":0.35}` |
 
 ## 如何调用
 
@@ -30,3 +32,9 @@ cadcraft-cli run input.dxf --cmd 'line {"points":[[0,0],[10,10]]}' --save output
 保存可编辑工程后由新进程或重新打开的同一宿主会话核对；导出格式单独解码/查看。方法存在和零退出不代表本场景已经完成。
 
 工作流来源与许可见 [workflow-sources.json](workflow-sources.json)。仅借鉴事实与方法，本文与参数例子原创编写。
+
+## 既有图纸保护与真实层状态
+
+先执行`layer {}`列出当前真实层，再用`getvar {"name":"INSUNITS"}`读取单位。不能只看实体列表就推断图层开关/锁定/打印属性。REFERENCE、WALL是示例名，必须替换为已匹配的目标层；不存在时先确认，不创建空层冒充原有参考层。仅在DIMENSIONS不存在时执行layer.new；已有层保持原属性。
+
+本例只锁定参考层、关闭该层打印，并把指定墙层线宽改为0.35mm。保留开关、冻结、颜色、线型和未指定图层；不删除实体、不重设单位。把原始DXF另存为新文件，重开后检查LAYER表的锁定标志、plot开关和线宽，确认全部原有实体和单位仍一致。输入文件本身不得覆盖。尺寸层颜色只是示例，按真实输出背景检查对比度，不强制覆盖既有配色。

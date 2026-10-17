@@ -1,33 +1,36 @@
-# 本场景的 Craft 方法与参数
+# 房间平面图：方法、参数与完成标准
 
-先读取输入与当前选择。数值、路径、名称和对象编号仅为格式示例；用当前输入、实际返回ID和目标尺寸替换后执行。
+输入示例：5000×4000毫米，底边2000至3000为1000毫米门洞。门开向内。用户尺寸不完整时先确认，不从照片猜测。先读实际CLI commands或同会话MCP工具schema。
 
-| 顺序与目的 | 实际方法 | 参数例子 |
+仅新建绘图时执行标记`newDocumentOnly`的new、INSUNITS与DIMSCALE步骤。既有工程先读取单位、当前图层和目标实体；下列坐标只供独立新图示例，不能直接叠加到既有房间。
+
+| 步骤 | 方法 | 参数示例 |
 | --- | --- | --- |
-| 1. 按实测毫米尺寸建立墙体层 | `layer.new` | `{"name":"WALL","current":true}` |
-| 2. 沿测量坐标闭合外轮廓 | `pline` | `{"vertices":[[0,0],[5000,0],[5000,4000],[0,4000]],"closed":true}` |
-| 3. 门窗与内墙逐段画线，示例为一条隔墙 | `line` | `{"points":[[2500,0],[2500,1800]]}` |
-| 4. 放置不遮挡墙体的净尺寸 | `dimlinear` | `{"p1":[0,0],"p2":[5000,0],"at":[0,-400]}` |
-| 5. 检查实体及单位 | `drawing.inspect` | `{"entities":true}` |
+| 1. 仅新建任务时初始化毫米图纸 | `new` | `{"metric":true,"template":"."}` |
+| 2. 显式设置单位为毫米 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 3. 仅本新建房间图放大原生标注文字与箭头 | `setvar` | `{"name":"DIMSCALE","value":100}` |
+| 4. 分离WALLS图层 | `layer.new` | `{"name":"WALLS","color":7,"current":true}` |
+| 5. 绘制定位线 | `line` | `{"points":[[0,0],[2000,0]]}` |
+| 6. 绘制定位线 | `line` | `{"points":[[3000,0],[5000,0],[5000,4000],[0,4000],[0,0]]}` |
+| 7. 分离DOOR图层 | `layer.new` | `{"name":"DOOR","color":1,"current":true}` |
+| 8. 绘制定位线 | `line` | `{"points":[[2000,0],[2000,1000]]}` |
+| 9. 门开启示意弧 | `arc` | `{"center":[2000,0],"radius":1000,"start":0,"end":90}` |
+| 10. 分离LABELS图层 | `layer.new` | `{"name":"LABELS","color":7,"current":true}` |
+| 11. 加入房间标识 | `text` | `{"at":[1800,2000],"text":"ROOM A","height":200}` |
+| 12. 分离DIMENSIONS图层 | `layer.new` | `{"name":"DIMENSIONS","color":7,"current":true}` |
+| 13. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[0,0],"p2":[5000,0],"at":[2500,-600]}` |
+| 14. 以实际端点生成尺寸，不覆盖数值 | `dimlinear` | `{"p1":[5000,0],"p2":[5000,4000],"at":[5600,2000]}` |
 
-## 如何调用
+## 同一会话执行
 
-宿主内已打开编辑器时使用该同会话MCP；先等待editor_status就绪，读取实际工具schema和当前命令参数。独立CLI可用于文件任务，但新进程与已打开Web编辑器不是同一状态。
+MCP使用当前编辑器会话的`execute {"command":"line","params":{"points":[[0,0],[2000,0]]}}`，逐步检查返回。独立CLI把各行作为同一次`cadcraft-cli run --metric --cmd <方法加JSON> ... --save room-review.dxf`的argv；Windows使用参数数组，不拼接shell字符串。首次用实例必须在副本/新图，保存为新名称。
 
-本插件MCP包装：`execute`，参数 `{"command": "layer.new", "params": {"name": "WALL", "current": true}}`。后续行保持同一会话和对象选择，逐条检查实际结果。
+本例底墙由两段分开画，不能再用闭合四边形补齐，否则会封住门洞。单线墙不等于真实墙厚；需要双线墙、窗洞与净空时按用户确认后的实体另建。
 
-CLI 语法（下面是展示用写法，实际跨平台执行用argv避免shell引号差异）：
+## 保存与核对
 
-cadcraft-cli run input.dxf --cmd 'line {"points":[[0,0],[10,10]]}' --save output.dxf。多个 --cmd 同批次。
+新进程`cadcraft-cli info room-review.dxf`与`cadcraft-cli run room-review.dxf --cmd 'drawing.inspect {"entities":true,"limit":200}'`读取实体；核对五段墙、门扇及四分之一圆弧，底墙不能跨越[2000,3000]。原生DIMENSION须量得5000和4000，检查无自定义数值覆盖。检查INSUNITS=4、DIMSCALE=100以及ROOM A标签。
 
-## 参数核对与完成标准
+`cadcraft-cli convert room-review.dxf room-review.svg`导出审阅图；查看门开启方向、标注重叠和白底文字对比。尺寸与图层检查通过不等于施工图或宿主画面同步验收。
 
-先查 [当前版本观察目录](craft-command-evidence.json) 中对应方法的完整参数，再按实际运行时查询更新。结构化步骤见 [craft-steps.json](craft-steps.json)。
-
-核对房间净尺寸、门窗留口、墙体厚度与标注，不把示例矩形当真实房屋图。
-
-边界：输入必须有可信单位与实测边长；多段线返回句柄后才可按需要 offset。
-
-保存可编辑工程后由新进程或重新打开的同一宿主会话核对；导出格式单独解码/查看。方法存在和零退出不代表本场景已经完成。
-
-工作流来源与许可见 [workflow-sources.json](workflow-sources.json)。仅借鉴事实与方法，本文与参数例子原创编写。
+结构化步骤见[craft-steps.json](craft-steps.json)，命令目录见[craft-command-evidence.json](craft-command-evidence.json)，来源及许可见[workflow-sources.json](workflow-sources.json)。正文与参数为原创适配，来源不作运行依赖。

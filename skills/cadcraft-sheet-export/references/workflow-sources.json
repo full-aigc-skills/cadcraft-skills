@@ -25,6 +25,12 @@
           "path": "appx/licenses.rst",
           "url": "https://github.com/LibreCAD/docs/blob/94801d0c38e9e1a5a7919a1397ac50570eadad3b/appx/licenses.rst",
           "bytes": 4081
+        },
+        {
+          "path": "guides/completion.rst",
+          "url": "https://github.com/LibreCAD/docs/blob/94801d0c38e9e1a5a7919a1397ac50570eadad3b/guides/completion.rst",
+          "bytes": 11651,
+          "sha256": "41a385020904628293134a6e096b50c2f914661067cd0db8c5e83d9ece094a6c"
         }
       ],
       "reuse": "workflow facts and original adaptation only; no upstream text, code or assets copied"

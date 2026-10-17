@@ -5,7 +5,25 @@
   "execution": "COMMAND_MAPPED_NOT_SCENE_ACCEPTED",
   "steps": [
     {
-      "purpose": "建立独立描图层并保留底图",
+      "purpose": "仅新图建立毫米文档",
+      "command": "new",
+      "params": {
+        "metric": true,
+        "template": "."
+      },
+      "newDocumentOnly": true
+    },
+    {
+      "purpose": "仅新图显式毫米单位；既有图纸先确认实际单位",
+      "command": "setvar",
+      "params": {
+        "name": "INSUNITS",
+        "value": 4
+      },
+      "newDocumentOnly": true
+    },
+    {
+      "purpose": "宿主保留参考图，在CAD建立独立矢量描绘层",
       "command": "layer.new",
       "params": {
         "name": "TRACE",
@@ -52,6 +70,20 @@
       }
     },
     {
+      "purpose": "用独立的已知垂直尺寸检查比例和Y轴方向",
+      "command": "dist",
+      "params": {
+        "p1": [
+          0,
+          0
+        ],
+        "p2": [
+          0,
+          60
+        ]
+      }
+    },
+    {
       "purpose": "检查闭合形状",
       "command": "drawing.inspect",
       "params": {
@@ -59,8 +91,67 @@
       }
     }
   ],
-  "check": "至少两处已知尺寸能对应，不把透视照片直接视为正投影。",
-  "boundary": "先按真实参考尺寸校准；位图导入路径由当前 open/附图能力确定。",
+  "check": "确认两处独立已知尺寸100mm和60mm，核对轮廓闭合、Y轴方向、保存重开单位及参考原文件不变。",
+  "boundary": "先由宿主查看原图并确认控制点；当前CLI无位图附着/自动轮廓识别命令。此步骤只执行已确认点的相似变换和矢量描绘，不声称已自动识别或导入底图。透视、非等比畸变、无可靠尺寸时停止并确认，不按一个尺度硬套。",
   "templateOnly": true,
-  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。"
+  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。",
+  "calibration": {
+    "confirmedPointsOnly": true,
+    "originPx": [
+      20,
+      140
+    ],
+    "xReferencePx": [
+      220,
+      140
+    ],
+    "xLengthMm": 100,
+    "verticalCheckPx": [
+      20,
+      20
+    ],
+    "verticalLengthMm": 60,
+    "outlinePx": [
+      [
+        20,
+        140
+      ],
+      [
+        220,
+        140
+      ],
+      [
+        220,
+        20
+      ],
+      [
+        20,
+        20
+      ]
+    ],
+    "coordinateRule": "u=(xReferencePx-originPx)/pixelDistance; k=xLengthMm/pixelDistance; x=dot(pixel-originPx,u)*k; y=((px-originX)*uY-(py-originY)*uX)*k",
+    "automaticPointDetection": false,
+    "rasterUnderlayViaCli": false
+  },
+  "assertions": {
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        100,
+        0
+      ],
+      [
+        100,
+        60
+      ],
+      [
+        0,
+        60
+      ]
+    ],
+    "area": 6000
+  }
 }

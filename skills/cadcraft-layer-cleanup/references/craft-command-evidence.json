@@ -7,6 +7,33 @@
   },
   "ciRun": "https://github.com/partme-ai/full-aigc-plugins/actions/runs/38921194883",
   "observedCommands": {
+    "layer": {
+      "aliases": [
+        "la",
+        "layers",
+        "-layer"
+      ],
+      "enabled": true,
+      "id": "layer",
+      "interactive": true,
+      "label": "Layers",
+      "menu": [
+        "Format",
+        "Layers"
+      ],
+      "params": "{} → layers, states (typed -LAYER: option prompts)",
+      "shortcut": null
+    },
+    "getvar": {
+      "aliases": [],
+      "enabled": true,
+      "id": "getvar",
+      "interactive": false,
+      "label": "Get Variable",
+      "menu": [],
+      "params": "{name}",
+      "shortcut": null
+    },
     "drawing.inspect": {
       "aliases": [],
       "enabled": true,

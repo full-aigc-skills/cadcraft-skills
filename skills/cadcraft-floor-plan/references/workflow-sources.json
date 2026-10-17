@@ -9,7 +9,8 @@
         {
           "path": "guides/dwg-setup.rst",
           "url": "https://github.com/LibreCAD/docs/blob/94801d0c38e9e1a5a7919a1397ac50570eadad3b/guides/dwg-setup.rst",
-          "bytes": 10738
+          "bytes": 10738,
+          "sha256": "e2944b8daeac80f88ade18b3370250146681abc1bb2be56f46ef0bc0fef5b0cb"
         },
         {
           "path": "guides/annotate.rst",
@@ -27,7 +28,8 @@
           "bytes": 4081
         }
       ],
-      "reuse": "workflow facts and original adaptation only; no upstream text, code or assets copied"
+      "reuse": "workflow facts and original adaptation only; no upstream text, code or assets copied",
+      "adaptation": "毫米单位、按层组织轮廓与标注、实际绘图比例的工作流事实；本例门洞坐标、原生命令及结果检查为原创适配，不复制正文。"
     }
   ]
 }

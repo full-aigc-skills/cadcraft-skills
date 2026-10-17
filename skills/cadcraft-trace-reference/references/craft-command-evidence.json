@@ -7,6 +7,37 @@
   },
   "ciRun": "https://github.com/partme-ai/full-aigc-plugins/actions/runs/38921194883",
   "observedCommands": {
+    "new": {
+      "aliases": [
+        "qnew"
+      ],
+      "enabled": true,
+      "id": "new",
+      "interactive": false,
+      "label": "New Drawing...",
+      "menu": [
+        "File",
+        "New Drawing..."
+      ],
+      "params": "{metric?: bool, template?: path to a .dwt/.dxf template (\".\" for none; default QNEWTEMPLATE)}",
+      "shortcut": "Cmd+N"
+    },
+    "setvar": {
+      "aliases": [
+        "set"
+      ],
+      "enabled": true,
+      "id": "setvar",
+      "interactive": true,
+      "label": "Set Variable",
+      "menu": [
+        "Tools",
+        "Inquiry",
+        "Set Variable"
+      ],
+      "params": "{name, value}",
+      "shortcut": null
+    },
     "layer.new": {
       "aliases": [],
       "enabled": true,
