@@ -5,6 +5,18 @@
   "execution": "COMMAND_MAPPED_NOT_SCENE_ACCEPTED",
   "steps": [
     {
+      "purpose": "读取实际图层及开关锁定状态，先匹配真实图层",
+      "command": "layer",
+      "params": {}
+    },
+    {
+      "purpose": "只读取既有单位，不重设图纸",
+      "command": "getvar",
+      "params": {
+        "name": "INSUNITS"
+      }
+    },
+    {
       "purpose": "检查对象当前层与实体",
       "command": "drawing.inspect",
       "params": {
@@ -17,7 +29,8 @@
       "params": {
         "name": "DIMENSIONS",
         "color": 2
-      }
+      },
+      "whenLayerMissing": "DIMENSIONS"
     },
     {
       "purpose": "把底图层锁定且不打印",
@@ -37,8 +50,8 @@
       }
     }
   ],
-  "check": "整理前后实体数量变化有解释，锁定参考层仍存在，打印层配置正确。",
-  "boundary": "REFERENCE 与 WALL 是实际存在层名的示例；不存在时先查层，再创建或重映射。",
+  "check": "另存后核对REFERENCE锁定且不参与打印、WALL线宽为0.35毫米；原有实体及单位完全保留，未指定图层不得改变。",
+  "boundary": "REFERENCE和WALL必须匹配真实输入图层；缺失或歧义先确认，不新建同名空层冒充原图层。DIMENSIONS存在时跳过layer.new。示例不删除空层、不清图、不重设单位。",
   "templateOnly": true,
   "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。"
 }

@@ -5,21 +5,104 @@
   "execution": "COMMAND_MAPPED_NOT_SCENE_ACCEPTED",
   "steps": [
     {
-      "purpose": "先量取基准边长",
-      "command": "dist",
+      "purpose": "仅新图创建毫米文档",
+      "command": "new",
       "params": {
-        "p1": [
-          0,
-          0
-        ],
-        "p2": [
-          80,
-          0
-        ]
-      }
+        "metric": true,
+        "template": "."
+      },
+      "newDocumentOnly": true
     },
     {
-      "purpose": "放置线性尺寸",
+      "purpose": "仅新图显式毫米单位",
+      "command": "setvar",
+      "params": {
+        "name": "INSUNITS",
+        "value": 4
+      },
+      "newDocumentOnly": true
+    },
+    {
+      "purpose": "仅新图使用零件尺寸标注比例",
+      "command": "setvar",
+      "params": {
+        "name": "DIMSCALE",
+        "value": 1
+      },
+      "newDocumentOnly": true
+    },
+    {
+      "purpose": "轮廓与尺寸分层",
+      "command": "layer.new",
+      "params": {
+        "name": "OUTLINE",
+        "color": 7,
+        "current": true
+      },
+      "newDocumentOnly": true
+    },
+    {
+      "purpose": "按确认尺寸创建80×40外轮廓",
+      "command": "pline",
+      "params": {
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            80,
+            0
+          ],
+          [
+            80,
+            40
+          ],
+          [
+            0,
+            40
+          ]
+        ],
+        "closed": true
+      },
+      "newDocumentOnly": true
+    },
+    {
+      "purpose": "创建实际孔，后续尺寸必须对应孔心和孔径",
+      "command": "circle",
+      "params": {
+        "center": [
+          20,
+          20
+        ],
+        "radius": 5
+      },
+      "newDocumentOnly": true
+    },
+    {
+      "purpose": "创建实际孔，后续尺寸必须对应孔心和孔径",
+      "command": "circle",
+      "params": {
+        "center": [
+          60,
+          20
+        ],
+        "radius": 5
+      },
+      "newDocumentOnly": true
+    },
+    {
+      "purpose": "进入尺寸图层",
+      "command": "layer.new",
+      "params": {
+        "name": "DIMENSIONS",
+        "color": 7,
+        "current": true
+      },
+      "newDocumentOnly": true
+    },
+    {
+      "purpose": "量取外轮廓实际宽度",
       "command": "dimlinear",
       "params": {
         "p1": [
@@ -31,46 +114,114 @@
           0
         ],
         "at": [
-          0,
+          40,
           -10
         ]
       }
     },
     {
-      "purpose": "标注斜边的真实长度",
-      "command": "dimaligned",
+      "purpose": "量取外轮廓实际高度",
+      "command": "dimlinear",
       "params": {
         "p1": [
-          0,
+          80,
           0
         ],
         "p2": [
-          40,
-          30
+          80,
+          40
         ],
         "at": [
-          20,
-          25
+          90,
+          20
         ]
       }
     },
     {
-      "purpose": "标注圆半径，例子点位须来自实际圆",
+      "purpose": "标注两个真实孔心间距",
+      "command": "dimlinear",
+      "params": {
+        "p1": [
+          20,
+          20
+        ],
+        "p2": [
+          60,
+          20
+        ],
+        "at": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "purpose": "用真实孔心与圆周点生成R5半径，不写文字冒充数值",
       "command": "dimradius",
       "params": {
         "center": [
-          40,
+          20,
           20
         ],
         "point": [
-          45,
+          25,
           20
         ]
       }
+    },
+    {
+      "purpose": "核对尺寸与实际几何",
+      "command": "drawing.inspect",
+      "params": {
+        "entities": true,
+        "limit": 200
+      }
     }
   ],
-  "check": "尺寸值与实测几何一致，不能通过 text override 写成与几何不符的数字。",
-  "boundary": "孔径优先用实际圆句柄关联；示例坐标需换成所选零件的基准。",
+  "check": "保存并重开DXF，量测80×40轮廓、两孔R5和40孔距；四个原生DIMENSION不得包含数值覆盖，不能只看标签。",
+  "boundary": "这是新图技术示例，不是制造设计。既有图纸跳过newDocumentOnly步骤，读取INSUNITS和真实对象后重新计算尺寸端点；不调整未经确认的公差、材料和加工要求。",
   "templateOnly": true,
-  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。"
+  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。",
+  "inputs": "独立新图示例：80×40毫米零件，两个R5圆孔，孔心(20,20)和(60,20)。真实图纸须从当前实体核对轮廓、圆心和半径。",
+  "assertions": {
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        80,
+        0
+      ],
+      [
+        80,
+        40
+      ],
+      [
+        0,
+        40
+      ]
+    ],
+    "area": 3200,
+    "circles": [
+      [
+        20,
+        20,
+        5
+      ],
+      [
+        60,
+        20,
+        5
+      ]
+    ],
+    "dimensions": 4,
+    "dimensionValues": [
+      80,
+      40,
+      40,
+      5
+    ],
+    "dimscale": 1
+  }
 }

@@ -1,32 +1,29 @@
-# 本场景的 Craft 方法与参数
+# 真实零件的原生标注
 
-先读取输入与当前选择。数值、路径、名称和对象编号仅为格式示例；用当前输入、实际返回ID和目标尺寸替换后执行。
+本例先创建实际轮廓与两个圆孔，再由相同坐标生成尺寸；不是在空图上写80、40、R5。既有图纸先inspect/query_entities读取单位、轮廓端点、孔心与半径，按当前几何重算参数。仅新建时执行newDocumentOnly步骤，不向既有图纸叠画示例。
 
-| 顺序与目的 | 实际方法 | 参数例子 |
+| 次序与目的 | 方法 | 参数示例 |
 | --- | --- | --- |
-| 1. 先量取基准边长 | `dist` | `{"p1":[0,0],"p2":[80,0]}` |
-| 2. 放置线性尺寸 | `dimlinear` | `{"p1":[0,0],"p2":[80,0],"at":[0,-10]}` |
-| 3. 标注斜边的真实长度 | `dimaligned` | `{"p1":[0,0],"p2":[40,30],"at":[20,25]}` |
-| 4. 标注圆半径，例子点位须来自实际圆 | `dimradius` | `{"center":[40,20],"point":[45,20]}` |
+| 1. 仅新图创建毫米文档 | `new` | `{"metric":true,"template":"."}` |
+| 2. 仅新图显式毫米单位 | `setvar` | `{"name":"INSUNITS","value":4}` |
+| 3. 仅新图使用零件尺寸标注比例 | `setvar` | `{"name":"DIMSCALE","value":1}` |
+| 4. 轮廓与尺寸分层 | `layer.new` | `{"name":"OUTLINE","color":7,"current":true}` |
+| 5. 按确认尺寸创建80×40外轮廓 | `pline` | `{"vertices":[[0,0],[80,0],[80,40],[0,40]],"closed":true}` |
+| 6. 创建实际孔，后续尺寸必须对应孔心和孔径 | `circle` | `{"center":[20,20],"radius":5}` |
+| 7. 创建实际孔，后续尺寸必须对应孔心和孔径 | `circle` | `{"center":[60,20],"radius":5}` |
+| 8. 进入尺寸图层 | `layer.new` | `{"name":"DIMENSIONS","color":7,"current":true}` |
+| 9. 量取外轮廓实际宽度 | `dimlinear` | `{"p1":[0,0],"p2":[80,0],"at":[40,-10]}` |
+| 10. 量取外轮廓实际高度 | `dimlinear` | `{"p1":[80,0],"p2":[80,40],"at":[90,20]}` |
+| 11. 标注两个真实孔心间距 | `dimlinear` | `{"p1":[20,20],"p2":[60,20],"at":[40,55]}` |
+| 12. 用真实孔心与圆周点生成R5半径，不写文字冒充数值 | `dimradius` | `{"center":[20,20],"point":[25,20]}` |
+| 13. 核对尺寸与实际几何 | `drawing.inspect` | `{"entities":true,"limit":200}` |
 
-## 如何调用
+## 实际调用与核对
 
-宿主内已打开编辑器时使用该同会话MCP；先等待editor_status就绪，读取实际工具schema和当前命令参数。独立CLI可用于文件任务，但新进程与已打开Web编辑器不是同一状态。
+同一编辑器MCP使用`execute {"command":"dimlinear","params":{"p1":[20,20],"p2":[60,20],"at":[40,55]}}`；先等editor_status就绪并读取实时schema。不要为已有对象另开无关CLI进程后宣称画面同步。
 
-本插件MCP包装：`execute`，参数 `{"command": "dist", "params": {"p1": [0, 0], "p2": [80, 0]}}`。后续行保持同一会话和对象选择，逐条检查实际结果。
+独立文件任务把各行组合为同一次`cadcraft-cli run --metric --cmd <方法加JSON> ... --save part-dimensions.dxf`，每条为单个argv，Windows不拼接shell字符串。原文件任务使用副本、跳过初始化和示例几何，保留原始对象。
 
-CLI 语法（下面是展示用写法，实际跨平台执行用argv避免shell引号差异）：
+新进程`cadcraft-cli info part-dimensions.dxf`和`cadcraft-cli run part-dimensions.dxf --cmd 'drawing.inspect {"entities":true,"limit":200}'`核对闭合轮廓、两孔和四个原生尺寸。量测宽80、高40、孔距40、半径5；禁止尺寸文字覆盖为期望数字。导出SVG审阅尺寸重叠和小字。材料、公差与制造可用性需由用户另行确认，本流程不自动承诺。
 
-cadcraft-cli run input.dxf --cmd 'line {"points":[[0,0],[10,10]]}' --save output.dxf。多个 --cmd 同批次。
-
-## 参数核对与完成标准
-
-先查 [当前版本观察目录](craft-command-evidence.json) 中对应方法的完整参数，再按实际运行时查询更新。结构化步骤见 [craft-steps.json](craft-steps.json)。
-
-尺寸值与实测几何一致，不能通过 text override 写成与几何不符的数字。
-
-边界：孔径优先用实际圆句柄关联；示例坐标需换成所选零件的基准。
-
-保存可编辑工程后由新进程或重新打开的同一宿主会话核对；导出格式单独解码/查看。方法存在和零退出不代表本场景已经完成。
-
-工作流来源与许可见 [workflow-sources.json](workflow-sources.json)。仅借鉴事实与方法，本文与参数例子原创编写。
+步骤在[craft-steps.json](craft-steps.json)，参数目录在[craft-command-evidence.json](craft-command-evidence.json)，参考事实与许可在[workflow-sources.json](workflow-sources.json)。
