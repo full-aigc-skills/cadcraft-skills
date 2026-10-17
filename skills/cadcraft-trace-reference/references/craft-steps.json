@@ -1,0 +1,66 @@
+{
+  "schema": "craft-scenario-playbooks/v1",
+  "application": "cadcraft",
+  "id": "trace-reference",
+  "execution": "COMMAND_MAPPED_NOT_SCENE_ACCEPTED",
+  "steps": [
+    {
+      "purpose": "建立独立描图层并保留底图",
+      "command": "layer.new",
+      "params": {
+        "name": "TRACE",
+        "current": true
+      }
+    },
+    {
+      "purpose": "按已校准控制点描绘轮廓",
+      "command": "pline",
+      "params": {
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            100,
+            0
+          ],
+          [
+            100,
+            60
+          ],
+          [
+            0,
+            60
+          ]
+        ],
+        "closed": true
+      }
+    },
+    {
+      "purpose": "量取控制点间距检验缩放",
+      "command": "dist",
+      "params": {
+        "p1": [
+          0,
+          0
+        ],
+        "p2": [
+          100,
+          0
+        ]
+      }
+    },
+    {
+      "purpose": "检查闭合形状",
+      "command": "drawing.inspect",
+      "params": {
+        "entities": true
+      }
+    }
+  ],
+  "check": "至少两处已知尺寸能对应，不把透视照片直接视为正投影。",
+  "boundary": "先按真实参考尺寸校准；位图导入路径由当前 open/附图能力确定。",
+  "templateOnly": true,
+  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。"
+}

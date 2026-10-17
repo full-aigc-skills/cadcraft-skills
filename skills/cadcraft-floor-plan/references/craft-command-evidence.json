@@ -1,0 +1,78 @@
+{
+  "runtime": {
+    "version": "v0.7.0",
+    "url": "https://github.com/storytold/cadcraft/releases/download/v0.7.0/cadcraft-0.7.0-windows-x64-portable.zip",
+    "sha256": "1eebfb2f73ffdc0ead1313c1053de12ec26da6b2f4038bfe989ad51b34053c8a",
+    "executable": "cadcraft-cli.exe"
+  },
+  "ciRun": "https://github.com/partme-ai/full-aigc-plugins/actions/runs/38921194883",
+  "observedCommands": {
+    "layer.new": {
+      "aliases": [],
+      "enabled": true,
+      "id": "layer.new",
+      "interactive": false,
+      "label": "New Layer",
+      "menu": [],
+      "params": "{name, color?, linetype?, lineweight? (mm), current?: bool}",
+      "shortcut": null
+    },
+    "pline": {
+      "aliases": [
+        "pl"
+      ],
+      "enabled": true,
+      "id": "pline",
+      "interactive": true,
+      "label": "Polyline",
+      "menu": [
+        "Draw",
+        "Polyline"
+      ],
+      "params": "{vertices: [[x,y] | {p:[x,y], bulge, startWidth, endWidth}], closed?, width?}",
+      "shortcut": null
+    },
+    "line": {
+      "aliases": [
+        "l"
+      ],
+      "enabled": true,
+      "id": "line",
+      "interactive": true,
+      "label": "Line",
+      "menu": [
+        "Draw",
+        "Line"
+      ],
+      "params": "{points: [[x,y],...], closed?: bool}",
+      "shortcut": null
+    },
+    "dimlinear": {
+      "aliases": [
+        "dli",
+        "dimlin"
+      ],
+      "enabled": true,
+      "id": "dimlinear",
+      "interactive": true,
+      "label": "Linear",
+      "menu": [
+        "Dimension",
+        "Linear"
+      ],
+      "params": "{p1, p2, at, rotation? (degrees; default: horizontal/vertical from `at`), text?} | {object: hex, at} (associative)",
+      "shortcut": null
+    },
+    "drawing.inspect": {
+      "aliases": [],
+      "enabled": true,
+      "id": "drawing.inspect",
+      "interactive": false,
+      "label": "Inspect Drawing",
+      "menu": [],
+      "params": "{entities?: bool, limit?: n}",
+      "shortcut": null
+    }
+  },
+  "sceneAcceptance": "NOT_RUN"
+}

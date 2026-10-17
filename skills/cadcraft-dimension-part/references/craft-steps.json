@@ -1,0 +1,76 @@
+{
+  "schema": "craft-scenario-playbooks/v1",
+  "application": "cadcraft",
+  "id": "dimension-part",
+  "execution": "COMMAND_MAPPED_NOT_SCENE_ACCEPTED",
+  "steps": [
+    {
+      "purpose": "先量取基准边长",
+      "command": "dist",
+      "params": {
+        "p1": [
+          0,
+          0
+        ],
+        "p2": [
+          80,
+          0
+        ]
+      }
+    },
+    {
+      "purpose": "放置线性尺寸",
+      "command": "dimlinear",
+      "params": {
+        "p1": [
+          0,
+          0
+        ],
+        "p2": [
+          80,
+          0
+        ],
+        "at": [
+          0,
+          -10
+        ]
+      }
+    },
+    {
+      "purpose": "标注斜边的真实长度",
+      "command": "dimaligned",
+      "params": {
+        "p1": [
+          0,
+          0
+        ],
+        "p2": [
+          40,
+          30
+        ],
+        "at": [
+          20,
+          25
+        ]
+      }
+    },
+    {
+      "purpose": "标注圆半径，例子点位须来自实际圆",
+      "command": "dimradius",
+      "params": {
+        "center": [
+          40,
+          20
+        ],
+        "point": [
+          45,
+          20
+        ]
+      }
+    }
+  ],
+  "check": "尺寸值与实测几何一致，不能通过 text override 写成与几何不符的数字。",
+  "boundary": "孔径优先用实际圆句柄关联；示例坐标需换成所选零件的基准。",
+  "templateOnly": true,
+  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。"
+}

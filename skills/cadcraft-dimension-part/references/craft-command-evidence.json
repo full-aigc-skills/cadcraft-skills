@@ -1,0 +1,76 @@
+{
+  "runtime": {
+    "version": "v0.7.0",
+    "url": "https://github.com/storytold/cadcraft/releases/download/v0.7.0/cadcraft-0.7.0-windows-x64-portable.zip",
+    "sha256": "1eebfb2f73ffdc0ead1313c1053de12ec26da6b2f4038bfe989ad51b34053c8a",
+    "executable": "cadcraft-cli.exe"
+  },
+  "ciRun": "https://github.com/partme-ai/full-aigc-plugins/actions/runs/38921194883",
+  "observedCommands": {
+    "dist": {
+      "aliases": [
+        "di"
+      ],
+      "enabled": true,
+      "id": "dist",
+      "interactive": true,
+      "label": "Distance",
+      "menu": [
+        "Tools",
+        "Inquiry",
+        "Distance"
+      ],
+      "params": "{p1, p2}",
+      "shortcut": null
+    },
+    "dimlinear": {
+      "aliases": [
+        "dli",
+        "dimlin"
+      ],
+      "enabled": true,
+      "id": "dimlinear",
+      "interactive": true,
+      "label": "Linear",
+      "menu": [
+        "Dimension",
+        "Linear"
+      ],
+      "params": "{p1, p2, at, rotation? (degrees; default: horizontal/vertical from `at`), text?} | {object: hex, at} (associative)",
+      "shortcut": null
+    },
+    "dimaligned": {
+      "aliases": [
+        "dal",
+        "dimali"
+      ],
+      "enabled": true,
+      "id": "dimaligned",
+      "interactive": true,
+      "label": "Aligned",
+      "menu": [
+        "Dimension",
+        "Aligned"
+      ],
+      "params": "{p1, p2, at, text?}",
+      "shortcut": null
+    },
+    "dimradius": {
+      "aliases": [
+        "dra",
+        "dimrad"
+      ],
+      "enabled": true,
+      "id": "dimradius",
+      "interactive": true,
+      "label": "Radius",
+      "menu": [
+        "Dimension",
+        "Radius"
+      ],
+      "params": "{handle, at?} | {center, point}",
+      "shortcut": null
+    }
+  },
+  "sceneAcceptance": "NOT_RUN"
+}

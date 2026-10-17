@@ -1,0 +1,231 @@
+{
+  "runtime": "cadcraft-cli 0.7.0 Windows x64",
+  "catalogSource": "Windows native catalog from run 38921194883",
+  "sceneAcceptance": "TECHNICAL_PASS_TWO_DRAWINGS_REVIEWED",
+  "observedCommands": {
+    "arc": {
+      "aliases": [
+        "a"
+      ],
+      "enabled": true,
+      "id": "arc",
+      "interactive": true,
+      "label": "Arc",
+      "menu": [
+        "Draw",
+        "Arc",
+        "3 Points"
+      ],
+      "params": "{p1, p2, p3} | {center, radius, start, end (degrees)} | {start, center, end}",
+      "shortcut": null
+    },
+    "area": {
+      "aliases": [
+        "aa"
+      ],
+      "enabled": true,
+      "id": "area",
+      "interactive": true,
+      "label": "Area",
+      "menu": [
+        "Tools",
+        "Inquiry",
+        "Area"
+      ],
+      "params": "{points: [[x,y],...]} | {handle}",
+      "shortcut": null
+    },
+    "circle": {
+      "aliases": [
+        "c"
+      ],
+      "enabled": true,
+      "id": "circle",
+      "interactive": true,
+      "label": "Circle",
+      "menu": [
+        "Draw",
+        "Circle",
+        "Center, Radius"
+      ],
+      "params": "{center, radius} | {center, diameter} | {p1, p2} | {p1, p2, p3}",
+      "shortcut": null
+    },
+    "dimdiameter": {
+      "aliases": [
+        "ddi",
+        "dimdia"
+      ],
+      "enabled": true,
+      "id": "dimdiameter",
+      "interactive": true,
+      "label": "Diameter",
+      "menu": [
+        "Dimension",
+        "Diameter"
+      ],
+      "params": "{handle, at?} | {center, point}",
+      "shortcut": null
+    },
+    "dimlinear": {
+      "aliases": [
+        "dli",
+        "dimlin"
+      ],
+      "enabled": true,
+      "id": "dimlinear",
+      "interactive": true,
+      "label": "Linear",
+      "menu": [
+        "Dimension",
+        "Linear"
+      ],
+      "params": "{p1, p2, at, rotation? (degrees; default: horizontal/vertical from `at`), text?} | {object: hex, at} (associative)",
+      "shortcut": null
+    },
+    "layer.new": {
+      "aliases": [],
+      "enabled": true,
+      "id": "layer.new",
+      "interactive": false,
+      "label": "New Layer",
+      "menu": [],
+      "params": "{name, color?, linetype?, lineweight? (mm), current?: bool}",
+      "shortcut": null
+    },
+    "line": {
+      "aliases": [
+        "l"
+      ],
+      "enabled": true,
+      "id": "line",
+      "interactive": true,
+      "label": "Line",
+      "menu": [
+        "Draw",
+        "Line"
+      ],
+      "params": "{points: [[x,y],...], closed?: bool}",
+      "shortcut": null
+    },
+    "new": {
+      "aliases": [
+        "qnew"
+      ],
+      "enabled": true,
+      "id": "new",
+      "interactive": false,
+      "label": "New Drawing...",
+      "menu": [
+        "File",
+        "New Drawing..."
+      ],
+      "params": "{metric?: bool, template?: path to a .dwt/.dxf template (\".\" for none; default QNEWTEMPLATE)}",
+      "shortcut": "Cmd+N"
+    },
+    "pline": {
+      "aliases": [
+        "pl"
+      ],
+      "enabled": true,
+      "id": "pline",
+      "interactive": true,
+      "label": "Polyline",
+      "menu": [
+        "Draw",
+        "Polyline"
+      ],
+      "params": "{vertices: [[x,y] | {p:[x,y], bulge, startWidth, endWidth}], closed?, width?}",
+      "shortcut": null
+    },
+    "setvar": {
+      "aliases": [
+        "set"
+      ],
+      "enabled": true,
+      "id": "setvar",
+      "interactive": true,
+      "label": "Set Variable",
+      "menu": [
+        "Tools",
+        "Inquiry",
+        "Set Variable"
+      ],
+      "params": "{name, value}",
+      "shortcut": null
+    },
+    "text": {
+      "aliases": [
+        "dt",
+        "dtext"
+      ],
+      "enabled": true,
+      "id": "text",
+      "interactive": true,
+      "label": "Single Line Text",
+      "menu": [
+        "Draw",
+        "Text",
+        "Single Line Text"
+      ],
+      "params": "{at, text, height?, rotation? (degrees), justify?: L|C|R|M|TL|TC|TR|ML|MC|MR|BL|BC|BR}",
+      "shortcut": null
+    },
+    "getvar": {
+      "aliases": [],
+      "enabled": true,
+      "id": "getvar",
+      "interactive": false,
+      "label": "Get Variable",
+      "menu": [],
+      "params": "{name}",
+      "shortcut": null
+    }
+  },
+  "archiveSha256": "1eebfb2f73ffdc0ead1313c1053de12ec26da6b2f4038bfe989ad51b34053c8a",
+  "executableSha256": "f2e08ee004ec935cab947b3db2516de18836fef08ac252153972f1769ad62d63",
+  "technicalRoundtrip": {
+    "ciRun": "https://github.com/partme-ai/full-aigc-plugins/actions/runs/38933489537",
+    "ciSourceCommit": "5f4932135fd104011e4a33cb2a7ac8828488cf60",
+    "sourceCommit": "9cd1e3ccd2d6c2d14552cd3b8c1f7fc859fb9e96",
+    "recipes": [
+      "mounting-plate-four-holes",
+      "flange-bolt-circle",
+      "room-door-opening",
+      "equipment-grid-layout",
+      "pipe-route-length",
+      "linear-hole-pattern",
+      "notched-part-area",
+      "drawing-border-title"
+    ],
+    "stepHashes": {
+      "mounting-plate-four-holes": "a5476305cb758cb5f5c95c113976d6e43a8bf949b8abbbfa86ffa824f5462822",
+      "flange-bolt-circle": "92df4cde5420d326775862a786717dee9329fb8f1602fd2eb0da610cd6b20ddc",
+      "room-door-opening": "854a7edaad8515b0178ffcfdfa15796f1238d5f8eaae9227d869baff7de8f0e5",
+      "equipment-grid-layout": "2a28c3e7d0b422ce52c299658ce7453a6ef7bad5d812ef03e9787d9d0b6c5310",
+      "pipe-route-length": "8b914cdcb5e2960e3f3b6b0dda0e1192e8cbf03b7fe8e211015eac8b6af1670d",
+      "linear-hole-pattern": "730694c48952524baadbc6fa624f9bbb086b8d73bb72d0f40e4ec8f493f9d1bc",
+      "notched-part-area": "bbaddab19ebcd27a70ecd9387fca79a4cc46ac45238f6d9d721196a9d1a8ce1e",
+      "drawing-border-title": "2ff23166069cf0d7f7270f48a5c9bad1036b7bb016d4fc241077085a1d0ddf0c"
+    },
+    "checks": [
+      "DXF actual circle count, centers and radii",
+      "closed polygon vertices and shoelace area",
+      "open route segment sum",
+      "native dimension type/definition-point measurement/no text override",
+      "full wall and door-leaf segments plus opening arc",
+      "grid lines, native reopened text and mm units",
+      "room DIMSCALE 100",
+      "CLI save-reopen-inspect-SVG conversion"
+    ],
+    "manualDrawingReview": {
+      "recipes": [
+        "mounting-plate-four-holes",
+        "room-door-opening"
+      ],
+      "result": "PASS_FOR_TWO_EXAMPLES",
+      "scope": "Rendered actual Windows SVGs; plate 100/60/diameter6 and room 5000/4000 labels readable, door gap visible. Remaining six diagrams not visually reviewed. No manufacturing/printing/host sync acceptance."
+    },
+    "hostSynchronization": "NOT_TESTED"
+  }
+}
