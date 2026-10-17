@@ -1,6 +1,6 @@
 {
   "name": "cadcraft-skills",
-  "version": "0.1.0-dev.0",
+  "version": "0.1.0-dev.20261018.1",
   "description": "CADCraft 2D 绘图、图纸检查与原生 CLI/MCP 自动化技能。",
   "author": {
     "name": "Full AIGC Skills"

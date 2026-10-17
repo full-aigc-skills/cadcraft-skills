@@ -76,4 +76,4 @@ Run `python3 scripts/validate_skills.py` after editing. CI runs the same structu
 
 ## 等角孔分布图开发候选
 
-新增 `cadcraft-bolt-circle`：实际句柄驱动极轴阵列，孔数/圆心/起始角参数化，独立CLI执行与保存重开检查。当前未发布新市场版本，Windows与真实宿主验收另行记录，不代表制造设计合格。
+新增 `cadcraft-bolt-circle`：实际句柄驱动极轴阵列，孔数/圆心/起始角参数化，独立CLI执行与保存重开检查。技能源现有12个入口。Windows六孔/偏移七孔及真实Codex几何同步通过；尚未发布新的市场包，尺寸GUI显示与其他宿主仍待验收，不代表制造设计合格。
