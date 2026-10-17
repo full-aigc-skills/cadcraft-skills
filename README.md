@@ -73,3 +73,7 @@ Run `python3 scripts/validate_skills.py` after editing. CI runs the same structu
 ## 绘图场景操作手册
 
 新增8条安装板、法兰、门洞、网格、路由、孔列、缺口和图框流程，见 [cadcraft-scenario-playbooks](skills/cadcraft-scenario-playbooks/SKILL.md)。包含真实方法、参数和保存重开检查；技术运行状态与图样效果验收分别记录。
+
+## 等角孔分布图开发候选
+
+新增 `cadcraft-bolt-circle`：实际句柄驱动极轴阵列，孔数/圆心/起始角参数化，独立CLI执行与保存重开检查。当前未发布新市场版本，Windows与真实宿主验收另行记录，不代表制造设计合格。

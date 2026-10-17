@@ -1,0 +1,143 @@
+{
+  "schema": "craft-scenario-playbooks/v1",
+  "application": "cadcraft",
+  "id": "bolt-circle",
+  "execution": "NATIVE_CANDIDATE",
+  "steps": [
+    {
+      "purpose": "新图设置毫米单位",
+      "command": "setvar",
+      "params": {
+        "name": "INSUNITS",
+        "value": 4
+      }
+    },
+    {
+      "purpose": "轮廓层",
+      "command": "layer.new",
+      "params": {
+        "name": "OUTLINE",
+        "color": 7,
+        "current": true
+      }
+    },
+    {
+      "purpose": "外轮廓",
+      "command": "circle",
+      "params": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 55
+      }
+    },
+    {
+      "purpose": "中心孔",
+      "command": "circle",
+      "params": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 15
+      }
+    },
+    {
+      "purpose": "孔层",
+      "command": "layer.new",
+      "params": {
+        "name": "BOLT_HOLES",
+        "color": 7,
+        "current": true
+      }
+    },
+    {
+      "purpose": "实际种子孔并捕获返回句柄",
+      "command": "circle",
+      "params": {
+        "center": [
+          40,
+          0
+        ],
+        "radius": 3
+      },
+      "capture": "seed.handle"
+    },
+    {
+      "purpose": "对真实种子孔进行360度均布，count包含原孔",
+      "command": "arraypolar",
+      "params": {
+        "handles": [
+          "$seed.handle"
+        ],
+        "center": [
+          0,
+          0
+        ],
+        "count": 6,
+        "angle": 360,
+        "rotate": true,
+        "associative": false
+      }
+    },
+    {
+      "purpose": "独立辅助层，不将节圆当加工轮廓",
+      "command": "layer.new",
+      "params": {
+        "name": "PITCH_GUIDE",
+        "color": 8,
+        "current": true
+      }
+    },
+    {
+      "purpose": "节圆位置参考",
+      "command": "circle",
+      "params": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 40
+      }
+    },
+    {
+      "purpose": "新图尺寸显示比例",
+      "command": "setvar",
+      "params": {
+        "name": "DIMSCALE",
+        "value": 0.5
+      }
+    },
+    {
+      "purpose": "原生尺寸层",
+      "command": "layer.new",
+      "params": {
+        "name": "DIMENSIONS",
+        "color": 7,
+        "current": true
+      }
+    },
+    {
+      "purpose": "标注实际孔半径",
+      "command": "dimradius",
+      "params": {
+        "handle": "$seed.handle",
+        "at": [
+          70,
+          -10
+        ]
+      }
+    },
+    {
+      "purpose": "读回实际圆心与半径",
+      "command": "drawing.inspect",
+      "params": {
+        "entities": true,
+        "limit": 2000
+      }
+    }
+  ],
+  "check": "六个R3孔心到原点均为40，角间隔60度且不重复；保存重开检查实际CIRCLE与原生DIMENSION，无尺寸文字覆盖；审阅PNG/SVG。",
+  "boundary": "二维新图示例，不决定材料、公差、载荷或可制造性；非关联阵列，改孔数须从保留的输入重建，不对已阵列孔重复阵列。既有文件不执行此新图脚本。"
+}

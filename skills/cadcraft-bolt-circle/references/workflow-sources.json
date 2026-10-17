@@ -1,0 +1,36 @@
+{
+  "sources": [
+    {
+      "repository": "mozman/ezdxf",
+      "commit": "84ae31976940f99e6d5f4d3b2e9131da02b574fe",
+      "license": "MIT",
+      "readFiles": [
+        {
+          "repository": "mozman/ezdxf",
+          "commit": "84ae31976940f99e6d5f4d3b2e9131da02b574fe",
+          "path": "examples/render/dimension_radius.py",
+          "url": "https://raw.githubusercontent.com/mozman/ezdxf/84ae31976940f99e6d5f4d3b2e9131da02b574fe/examples/render/dimension_radius.py",
+          "sha256": "d75d1a2610237e0420c86744ec2a69b82cf2d3333605b808cc22907dca8b5072",
+          "bytes": 12009
+        },
+        {
+          "repository": "mozman/ezdxf",
+          "commit": "84ae31976940f99e6d5f4d3b2e9131da02b574fe",
+          "path": "docs/source/tutorials/dxf_primitives.rst",
+          "url": "https://raw.githubusercontent.com/mozman/ezdxf/84ae31976940f99e6d5f4d3b2e9131da02b574fe/docs/source/tutorials/dxf_primitives.rst",
+          "sha256": "235b11a2adf2b1807597e01df5c19c5e7901c3bb4719f121e6efde984bfac2da",
+          "bytes": 4406
+        },
+        {
+          "repository": "mozman/ezdxf",
+          "commit": "84ae31976940f99e6d5f4d3b2e9131da02b574fe",
+          "path": "LICENSE",
+          "url": "https://raw.githubusercontent.com/mozman/ezdxf/84ae31976940f99e6d5f4d3b2e9131da02b574fe/LICENSE",
+          "sha256": "db97ca426fc0d2b8124145de0f36181db73e6e713ce642d42fed2efc442edf19",
+          "bytes": 1071
+        }
+      ],
+      "adaptation": "仅借鉴实体以圆心/半径创建、分层与原生半径尺寸的事实；孔阵列编排、参数防护和检查原创，非复制上游脚本。"
+    }
+  ]
+}

@@ -19,6 +19,7 @@
     "./skills/cadcraft-scenario-playbooks",
     "./skills/cadcraft-sheet-export",
     "./skills/cadcraft-trace-reference",
-    "./skills/cadcraft-use"
+    "./skills/cadcraft-use",
+    "./skills/cadcraft-bolt-circle"
   ]
 }

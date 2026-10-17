@@ -1,0 +1,88 @@
+{
+  "runtime": "official cadcraft-cli 0.7.0 macOS universal",
+  "scope": "actual native commands output; no claim of identical Web backend",
+  "observedCommands": {
+    "circle": {
+      "aliases": [
+        "c"
+      ],
+      "enabled": true,
+      "id": "circle",
+      "interactive": true,
+      "label": "Circle",
+      "menu": [
+        "Draw",
+        "Circle",
+        "Center, Radius"
+      ],
+      "params": "{center, radius} | {center, diameter} | {p1, p2} | {p1, p2, p3}",
+      "shortcut": null
+    },
+    "dimradius": {
+      "aliases": [
+        "dra",
+        "dimrad"
+      ],
+      "enabled": true,
+      "id": "dimradius",
+      "interactive": true,
+      "label": "Radius",
+      "menu": [
+        "Dimension",
+        "Radius"
+      ],
+      "params": "{handle, at?} | {center, point}",
+      "shortcut": null
+    },
+    "arraypolar": {
+      "aliases": [],
+      "enabled": true,
+      "id": "arraypolar",
+      "interactive": true,
+      "label": "Polar Array",
+      "menu": [
+        "Modify",
+        "Array",
+        "Polar Array"
+      ],
+      "params": "{handles?, center, count, angle? (degrees, default 360), rotate?: bool, rows? (1), rowSpacing?, rowElevation?, levels? (1), levelSpacing?, base? ([x, y], default the first object's centre), associative?: bool (default ARRAYASSOCIATIVITY, on)} → {handle (the array, when associative), created (copies)}",
+      "shortcut": null
+    },
+    "layer.new": {
+      "aliases": [],
+      "enabled": true,
+      "id": "layer.new",
+      "interactive": false,
+      "label": "New Layer",
+      "menu": [],
+      "params": "{name, color?, linetype?, lineweight? (mm), current?: bool}",
+      "shortcut": null
+    },
+    "drawing.inspect": {
+      "aliases": [],
+      "enabled": true,
+      "id": "drawing.inspect",
+      "interactive": false,
+      "label": "Inspect Drawing",
+      "menu": [],
+      "params": "{entities?: bool, limit?: n}",
+      "shortcut": null
+    },
+    "setvar": {
+      "aliases": [
+        "set"
+      ],
+      "enabled": true,
+      "id": "setvar",
+      "interactive": true,
+      "label": "Set Variable",
+      "menu": [
+        "Tools",
+        "Inquiry",
+        "Set Variable"
+      ],
+      "params": "{name, value}",
+      "shortcut": null
+    }
+  }
+}
