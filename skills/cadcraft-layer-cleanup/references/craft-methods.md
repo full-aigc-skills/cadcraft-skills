@@ -4,10 +4,12 @@
 
 | 顺序与目的 | 实际方法 | 参数例子 |
 | --- | --- | --- |
-| 1. 检查对象当前层与实体 | `drawing.inspect` | `{"entities":true}` |
-| 2. 建立有用途的标注层 | `layer.new` | `{"name":"DIMENSIONS","color":2}` |
-| 3. 把底图层锁定且不打印 | `layer.set` | `{"name":"REFERENCE","locked":true,"plot":false}` |
-| 4. 统一墙体线宽 | `layer.set` | `{"name":"WALL","lineweight":0.35}` |
+| 1. 读取实际图层及开关锁定状态，先匹配真实图层 | `layer` | `{}` |
+| 2. 只读取既有单位，不重设图纸 | `getvar` | `{"name":"INSUNITS"}` |
+| 3. 检查对象当前层与实体 | `drawing.inspect` | `{"entities":true}` |
+| 4. 建立有用途的标注层（仅图层不存在时） | `layer.new` | `{"name":"DIMENSIONS","color":2}` |
+| 5. 把底图层锁定且不打印 | `layer.set` | `{"name":"REFERENCE","locked":true,"plot":false}` |
+| 6. 统一墙体线宽 | `layer.set` | `{"name":"WALL","lineweight":0.35}` |
 
 ## 如何调用
 
