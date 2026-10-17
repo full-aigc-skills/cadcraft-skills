@@ -1,0 +1,86 @@
+{
+  "schema": "craft-scenario-playbooks/v1",
+  "application": "cadcraft",
+  "id": "floor-plan",
+  "execution": "COMMAND_MAPPED_NOT_SCENE_ACCEPTED",
+  "steps": [
+    {
+      "purpose": "按实测毫米尺寸建立墙体层",
+      "command": "layer.new",
+      "params": {
+        "name": "WALL",
+        "current": true
+      }
+    },
+    {
+      "purpose": "沿测量坐标闭合外轮廓",
+      "command": "pline",
+      "params": {
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            5000,
+            0
+          ],
+          [
+            5000,
+            4000
+          ],
+          [
+            0,
+            4000
+          ]
+        ],
+        "closed": true
+      }
+    },
+    {
+      "purpose": "门窗与内墙逐段画线，示例为一条隔墙",
+      "command": "line",
+      "params": {
+        "points": [
+          [
+            2500,
+            0
+          ],
+          [
+            2500,
+            1800
+          ]
+        ]
+      }
+    },
+    {
+      "purpose": "放置不遮挡墙体的净尺寸",
+      "command": "dimlinear",
+      "params": {
+        "p1": [
+          0,
+          0
+        ],
+        "p2": [
+          5000,
+          0
+        ],
+        "at": [
+          0,
+          -400
+        ]
+      }
+    },
+    {
+      "purpose": "检查实体及单位",
+      "command": "drawing.inspect",
+      "params": {
+        "entities": true
+      }
+    }
+  ],
+  "check": "核对房间净尺寸、门窗留口、墙体厚度与标注，不把示例矩形当真实房屋图。",
+  "boundary": "输入必须有可信单位与实测边长；多段线返回句柄后才可按需要 offset。",
+  "templateOnly": true,
+  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。"
+}

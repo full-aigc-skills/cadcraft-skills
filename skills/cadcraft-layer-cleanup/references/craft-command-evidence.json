@@ -1,0 +1,42 @@
+{
+  "runtime": {
+    "version": "v0.7.0",
+    "url": "https://github.com/storytold/cadcraft/releases/download/v0.7.0/cadcraft-0.7.0-windows-x64-portable.zip",
+    "sha256": "1eebfb2f73ffdc0ead1313c1053de12ec26da6b2f4038bfe989ad51b34053c8a",
+    "executable": "cadcraft-cli.exe"
+  },
+  "ciRun": "https://github.com/partme-ai/full-aigc-plugins/actions/runs/38921194883",
+  "observedCommands": {
+    "drawing.inspect": {
+      "aliases": [],
+      "enabled": true,
+      "id": "drawing.inspect",
+      "interactive": false,
+      "label": "Inspect Drawing",
+      "menu": [],
+      "params": "{entities?: bool, limit?: n}",
+      "shortcut": null
+    },
+    "layer.new": {
+      "aliases": [],
+      "enabled": true,
+      "id": "layer.new",
+      "interactive": false,
+      "label": "New Layer",
+      "menu": [],
+      "params": "{name, color?, linetype?, lineweight? (mm), current?: bool}",
+      "shortcut": null
+    },
+    "layer.set": {
+      "aliases": [],
+      "enabled": true,
+      "id": "layer.set",
+      "interactive": false,
+      "label": "Set Layer Properties",
+      "menu": [],
+      "params": "{name, on?, frozen?, locked?, plot?, color?, linetype?, lineweight?, transparency?, description?, newVpFreeze?, plotStyle? (named plot style), newName?}",
+      "shortcut": null
+    }
+  },
+  "sceneAcceptance": "NOT_RUN"
+}

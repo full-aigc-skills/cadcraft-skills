@@ -1,0 +1,45 @@
+{
+  "runtime": {
+    "version": "v0.7.0",
+    "url": "https://github.com/storytold/cadcraft/releases/download/v0.7.0/cadcraft-0.7.0-windows-x64-portable.zip",
+    "sha256": "1eebfb2f73ffdc0ead1313c1053de12ec26da6b2f4038bfe989ad51b34053c8a",
+    "executable": "cadcraft-cli.exe"
+  },
+  "ciRun": "https://github.com/partme-ai/full-aigc-plugins/actions/runs/38921194883",
+  "observedCommands": {
+    "compare": {
+      "aliases": [],
+      "enabled": true,
+      "id": "compare",
+      "interactive": true,
+      "label": "Compare Drawings...",
+      "menu": [
+        "Tools",
+        "Compare Drawings..."
+      ],
+      "params": "{path} | {data: base64, name} | {document: index or title} → {other, added: [{handle, type}], removed, changed: [{handle, other, type, what}], counts: {added, removed, changed, common}, regions, truncated, message}",
+      "shortcut": null
+    },
+    "compare.next": {
+      "aliases": [],
+      "enabled": true,
+      "id": "compare.next",
+      "interactive": false,
+      "label": "Next Change",
+      "menu": [],
+      "params": "→ {region, of}: zoom to the next area with changes",
+      "shortcut": null
+    },
+    "compareclose": {
+      "aliases": [],
+      "enabled": true,
+      "id": "compareclose",
+      "interactive": false,
+      "label": "Close Comparison",
+      "menu": [],
+      "params": "{}: end the comparison and its overlay",
+      "shortcut": null
+    }
+  },
+  "sceneAcceptance": "NOT_RUN"
+}

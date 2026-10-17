@@ -1,0 +1,44 @@
+{
+  "schema": "craft-scenario-playbooks/v1",
+  "application": "cadcraft",
+  "id": "layer-cleanup",
+  "execution": "COMMAND_MAPPED_NOT_SCENE_ACCEPTED",
+  "steps": [
+    {
+      "purpose": "检查对象当前层与实体",
+      "command": "drawing.inspect",
+      "params": {
+        "entities": true
+      }
+    },
+    {
+      "purpose": "建立有用途的标注层",
+      "command": "layer.new",
+      "params": {
+        "name": "DIMENSIONS",
+        "color": 2
+      }
+    },
+    {
+      "purpose": "把底图层锁定且不打印",
+      "command": "layer.set",
+      "params": {
+        "name": "REFERENCE",
+        "locked": true,
+        "plot": false
+      }
+    },
+    {
+      "purpose": "统一墙体线宽",
+      "command": "layer.set",
+      "params": {
+        "name": "WALL",
+        "lineweight": 0.35
+      }
+    }
+  ],
+  "check": "整理前后实体数量变化有解释，锁定参考层仍存在，打印层配置正确。",
+  "boundary": "REFERENCE 与 WALL 是实际存在层名的示例；不存在时先查层，再创建或重映射。",
+  "templateOnly": true,
+  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。"
+}

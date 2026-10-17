@@ -1,0 +1,45 @@
+{
+  "schema": "craft-scenario-playbooks/v1",
+  "application": "cadcraft",
+  "id": "sheet-export",
+  "execution": "COMMAND_MAPPED_NOT_SCENE_ACCEPTED",
+  "steps": [
+    {
+      "purpose": "核对图纸内容范围",
+      "command": "drawing.inspect",
+      "params": {
+        "entities": false
+      }
+    },
+    {
+      "purpose": "按纸张与比例出图",
+      "command": "plot",
+      "params": {
+        "path": "output/sheet.pdf",
+        "layout": "Model",
+        "paper": "A4",
+        "scale": "1:50",
+        "fit": false,
+        "lineweights": true
+      }
+    },
+    {
+      "purpose": "测量用于纸面校核的基准",
+      "command": "dist",
+      "params": {
+        "p1": [
+          0,
+          0
+        ],
+        "p2": [
+          5000,
+          0
+        ]
+      }
+    }
+  ],
+  "check": "以5000mm基准在1:50纸面上应为100mm，逐页看文字、线宽与裁切。",
+  "boundary": "fit=true与固定比例不可混为一谈；纸张名、输出格式以当前 plot 支持为准。",
+  "templateOnly": true,
+  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。"
+}

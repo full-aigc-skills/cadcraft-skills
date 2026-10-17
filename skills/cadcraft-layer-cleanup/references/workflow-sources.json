@@ -1,0 +1,33 @@
+{
+  "policy": "只借鉴工作流事实，场景正文与命令例子原创编写，不复制外部代码、正文或素材。许可不明的来源仅作为参考。",
+  "sources": [
+    {
+      "repository": "LibreCAD/docs",
+      "commit": "94801d0c38e9e1a5a7919a1397ac50570eadad3b",
+      "license": null,
+      "readFiles": [
+        {
+          "path": "guides/dwg-setup.rst",
+          "url": "https://github.com/LibreCAD/docs/blob/94801d0c38e9e1a5a7919a1397ac50570eadad3b/guides/dwg-setup.rst",
+          "bytes": 10738
+        },
+        {
+          "path": "guides/annotate.rst",
+          "url": "https://github.com/LibreCAD/docs/blob/94801d0c38e9e1a5a7919a1397ac50570eadad3b/guides/annotate.rst",
+          "bytes": 15087
+        },
+        {
+          "path": "guides/blocks.rst",
+          "url": "https://github.com/LibreCAD/docs/blob/94801d0c38e9e1a5a7919a1397ac50570eadad3b/guides/blocks.rst",
+          "bytes": 15715
+        },
+        {
+          "path": "appx/licenses.rst",
+          "url": "https://github.com/LibreCAD/docs/blob/94801d0c38e9e1a5a7919a1397ac50570eadad3b/appx/licenses.rst",
+          "bytes": 4081
+        }
+      ],
+      "reuse": "workflow facts and original adaptation only; no upstream text, code or assets copied"
+    }
+  ]
+}
