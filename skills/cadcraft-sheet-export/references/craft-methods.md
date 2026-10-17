@@ -4,9 +4,11 @@
 
 | 顺序与目的 | 实际方法 | 参数例子 |
 | --- | --- | --- |
-| 1. 核对图纸内容范围 | `drawing.inspect` | `{"entities":false}` |
-| 2. 按纸张与比例出图 | `plot` | `{"path":"output/sheet.pdf","layout":"Model","paper":"A4","scale":"1:50","fit":false,"lineweights":true}` |
+| 1. 确认当前单位为毫米；不是毫米时先确认，不能只改单位变量冒充转换 | `getvar` | `{"name":"INSUNITS"}` |
+| 2. 核对图纸内容范围 | `drawing.inspect` | `{"entities":false}` |
 | 3. 测量用于纸面校核的基准 | `dist` | `{"p1":[0,0],"p2":[5000,0]}` |
+| 4. 量取第二个垂直基准，避免只校核一个方向 | `dist` | `{"p1":[0,0],"p2":[0,4000]}` |
+| 5. 按纸张与比例出图 | `plot` | `{"path":"output/sheet.pdf","layout":"Model","paper":"A4","scale":"1:50","fit":false,"lineweights":true,"landscape":false,"center":true,"compress":false}` |
 
 ## 如何调用
 
