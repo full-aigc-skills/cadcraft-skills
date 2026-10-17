@@ -23,8 +23,14 @@
       "params": {}
     }
   ],
-  "check": "分别保留A/B源文件，核对compare返回的added、removed、changed、common和regions；有变化区域时才跳转，比较关闭后原图实体保持一致。",
+  "check": "分别保留A/B源文件，核对compare返回的added、removed、changed、common和regions；有变化区域时才跳转，比较关闭后原图实体保持一致。 counts.added是当前图独有，removed是对方独有；需绑定当前A和对方B身份，不能当时间顺序的新增删除。",
   "boundary": "先把A作为当前图纸并明确B的路径/单位/坐标基准。文件差异不自动代表设计意图；无regions时跳过compare.next。比较是审阅，不能覆盖或合并A/B。",
   "templateOnly": true,
-  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。"
+  "argumentPolicy": "示例参数必须按当前输入、选择和实际返回ID替换；$变量先解析，数组变量整字段替换，不能将本文件直接当原生CLI脚本执行。",
+  "countMeaning": {
+    "added": "currentOnly",
+    "removed": "otherOnly",
+    "changed": "matchedEntityChanged",
+    "common": "matchedUnchanged"
+  }
 }
