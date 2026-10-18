@@ -12,3 +12,4 @@ jobs:
           python-version: '3.11'
       - run: python scripts/validate_skills.py
       - run: python scripts/test_bolt_circle.py
+      - run: python -m unittest discover -s skills/cadcraft-floor-plan/tests -v
